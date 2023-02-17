@@ -9,14 +9,15 @@
          <nav class="navbar sticky">
              <div class="container d-flex ">
                 
-                     <ul class="d-flex">
-                         <li><a class="me-5" href="{% url 'home:resources' %}" title="">Resources</a></li>
-                         <li><a class="me-5" href="{% url 'home:mentors' %}" title="">Mentors</a></li>
-                         <li><a class="me-5" href="{% url 'home:about' %}" title="">About</a></li>
+                     <ul class="d-flex list-inline">
+                         <li><a class="me-5 list-inline-item" href="{% url 'home:resources' %}" title="">Resources</a>
+                         </li>
+                         <li><a class="me-5 list-inline-item" href="{% url 'home:mentors' %}" title="">Mentors</a></li>
+                         <li><a class="me-5 list-inline-item" href="{% url 'home:about' %}" title="">About</a></li>
                          <!-- <li><a class="mx-5" href="./contact.html" title="">Contact</a></li> -->
                           <!-- user name -->
                           {% if user.is_authenticated %}
-                          <span id="user-name" class="ms-5 me-3"><a href="#"
+                          <span id="user-name" class="ms-5 me-3 list-inline-item"><a href="#"
                                   class="fw-semibold">
                                   <i class='bx bxs-user-circle'></i>&nbsp;{{ user }}</a>
                           </span>
@@ -26,10 +27,10 @@
                           </a>
                             {% endif %}
                          {% if user.is_authenticated %}
-                         <li><a class="me-5" href="{% url 'account_logout' %}">Logout</a></li>
+                         <li><a class="me-5 list-inline-item" href="{% url 'account_logout' %}">Logout</a></li>
                          {% else %}
-                         <li><a class="me-5" href="{% url 'account_signup' %}">Sign Up</a></li>
-                         <li><a class="me-5" href="{% url 'account_login' %}">Login</a></li>
+                         <li><a class="me-5 list-inline-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                         <li><a class="me-5 list-inline-item" href="{% url 'account_login' %}">Login</a></li>
                          {% endif %}
                      </ul>
 
