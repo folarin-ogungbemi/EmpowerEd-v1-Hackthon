@@ -1,7 +1,5 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
+from django.utils import timezone
 
 
 class User(models.Model):
@@ -56,7 +54,7 @@ class Parent(models.Model):
 class Student(models.Model):
     student_id = models.AutoField(primary_key=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(default=timezone.now)
     interests = models.TextField()
     parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)
     userpic = models.CharField(max_length=255)

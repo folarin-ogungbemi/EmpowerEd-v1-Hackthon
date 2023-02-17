@@ -45,3 +45,9 @@ class LessonAdmin(admin.ModelAdmin):
     list_filter = ('mentor', 'student')
     search_fields = ('mentor__user__username',
                      'child__user__username')
+
+
+@admin.register(Relationship)
+class RelationshipAdmin(admin.ModelAdmin):
+    list_display = ('mentor_id', 'student_id')
+    search_fields = ('mentor_id', 'student_id')
