@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
 
     # local-apps
     'home',
@@ -93,6 +94,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 CHANNEL_LAYERS = {
     "default": {
