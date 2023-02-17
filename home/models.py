@@ -34,7 +34,7 @@ class User(models.Model):
 
 class Mentor(models.Model):
     mentor_id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField()
     area_of_expertise = models.CharField(max_length=255)
     userpic = models.CharField(max_length=255)
