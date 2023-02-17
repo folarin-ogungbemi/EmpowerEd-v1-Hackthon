@@ -1,22 +1,28 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
+from .managers import UserManager
 
 
-class User(models.Model):
+class User(AbstractUser):
     ROLES = (
         ('Mentor', 'Mentor'),
         ('Student', 'Student'),
         ('Parent', 'Parent'),
     )
-
+    username = None
     user_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
+    email = models.EmailField(('email address'), unique=True)
     password = models.CharField(max_length=255)
     role = models.CharField(max_length=10, choices=ROLES)
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    objects = UserManager()
+
     def __str__(self):
-        return self.name
+        return f"{self.first_name} {self.last_name}"
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None

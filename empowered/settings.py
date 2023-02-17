@@ -35,6 +35,10 @@ else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/'
+    ]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,12 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
 
     # ext-apps
     'storages',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     # local-apps
     'home',
@@ -152,6 +156,20 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
+
+
+# CUSTOM USER MODEL
+ACCOUNT_FORMS = {
+    'signup': 'home.forms.CustomSignUpForm',
+}
+AUTH_USER_MODEL = 'home.User'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 if 'USE_AWS' in os.environ:
 

@@ -14,8 +14,23 @@
                          <li><a class="me-5" href="{% url 'home:mentors' %}" title="">Mentors</a></li>
                          <li><a class="me-5" href="{% url 'home:about' %}" title="">About</a></li>
                          <!-- <li><a class="mx-5" href="./contact.html" title="">Contact</a></li> -->
-                         <!-- <li><a class="mx-5" href="./contact.html" title="">Profile</a></li> -->
-                         <li><a class="me-5" href="{% url 'account_login' %}" title="">Login</a></li>
+                          <!-- user name -->
+                          {% if user.is_authenticated %}
+                          <span id="user-name" class="ms-5 me-3"><a href="#"
+                                  class="fw-semibold">
+                                  <i class='bx bxs-user-circle'></i>&nbsp;{{ user }}</a>
+                          </span>
+                          <!-- messenger icon -->
+                          <a href="#" class="px-0 me-2" aria-label="Messages">
+                              <i class='bx bx-envelope fs-6 text position-relative' id="messages"></i>
+                          </a>
+                            {% endif %}
+                         {% if user.is_authenticated %}
+                         <li><a class="me-5" href="{% url 'account_logout' %}">Logout</a></li>
+                         {% else %}
+                         <li><a class="me-5" href="{% url 'account_signup' %}">Sign Up</a></li>
+                         <li><a class="me-5" href="{% url 'account_login' %}">Login</a></li>
+                         {% endif %}
                      </ul>
 
              </div>
