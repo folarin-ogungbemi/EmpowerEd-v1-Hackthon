@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.views import generic
 
 
-def index(request):
-    """ A view to render the home page """
-    return render(request, 'home/index.html')
+class LandingView(generic.TemplateView):
+    """
+    A view for displaying the Home page.
+    """
+    template_name = "index.html"

@@ -11,35 +11,32 @@
     {% block extra_meta %}
     {% endblock %}
 
-    {% block icon %}
-    {% endblock %}
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
 
     {% block corecss %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
-
-    {% block extra_css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     {% endblock %}
 
     {% block corejs %}
     <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
-    {% endblock %}
-
-    {% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     {% endblock %}
 
     <title>EmpowerEd |{% block extra_title %} {% endblock %}</title>
   </head>
   <body>
+    {% include 'navbar.html' %}
 
-    {% block page_header %}
-    {% endblock %}
-    
 
     {% block content %}
+    <!-- Content -->
     {%endblock %}
   
-    {% block postloadjs %}
-    {% endblock%}
+    
+    {% include 'footer.html' %}
   </body>
+
 </html>
