@@ -38,6 +38,9 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'channels_redis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,6 +91,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'empowered.wsgi.application'
+ASGI_APPLICATION = "empowered.asgi.application"
 
 
 # Database
