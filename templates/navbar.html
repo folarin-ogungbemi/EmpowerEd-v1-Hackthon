@@ -1,20 +1,21 @@
 <header id="header" class="fixed-top">
-    <div class="container d-flex">
+    <div class="container d-flex justify-content-between">
 
-        <div class="logo-wrapper">
-            <!-- <h1><a href="{% url 'home:home' %}">EmpowerEd</a></h1> -->
-            <span id="small-img-logo" class="d-none d-md-block"></span>
+        <div class="justify-self-start mt-2">
+            <span><a href="{% url 'home:home' %}">EmpowerEd</a></span>
         </div>
 
         <!-- Navbar -->
-         <nav class="navbar navbar-fixed-top navbar-inverse">
-             <div class="container">
+         <nav class="navbar sticky">
+             <div class="container d-flex ">
                 
                      <ul class="d-flex">
-                         <li><a class="mx-5" href="./index.html" title="">01 : Home</a></li>
-                         <li><a class="mx-5" href="./works.html" title="">02 : Projects</a></li>
-                         <li><a class="mx-5" href="./about.html" title="">03 : About</a></li>
-                         <li><a class="mx-5" href="./contact.html" title="">04 : Contact</a></li>
+                         <li><a class="me-5" href="{% url 'home:resources' %}" title="">Resources</a></li>
+                         <li><a class="me-5" href="{% url 'home:mentors' %}" title="">Mentors</a></li>
+                         <li><a class="me-5" href="{% url 'home:about' %}" title="">About</a></li>
+                         <!-- <li><a class="mx-5" href="./contact.html" title="">Contact</a></li> -->
+                         <!-- <li><a class="mx-5" href="./contact.html" title="">Profile</a></li> -->
+                         <li><a class="me-5" href="{% url 'account_login' %}" title="">Login</a></li>
                      </ul>
 
              </div>
