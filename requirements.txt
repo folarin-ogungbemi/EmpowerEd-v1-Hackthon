@@ -10,7 +10,7 @@ channels-redis==4.0.0
 constantly==15.1.0
 daphne==4.0.0
 dj-database-url==1.2.0
-Django==3.2
+Django==4.1.1
 django-allauth==0.52.0
 django-channels==0.7.0
 django-redis==5.2.0

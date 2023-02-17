@@ -90,6 +90,15 @@ TEMPLATES = [
     },
 ]
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(os.environ.get("REDISCLOUD_URL", "REDIS_PORT"))]
+        },
+    },
+}
+
 WSGI_APPLICATION = 'empowered.wsgi.application'
 ASGI_APPLICATION = "empowered.asgi.application"
 
