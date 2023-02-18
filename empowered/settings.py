@@ -36,7 +36,7 @@ else:
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.8000-folarinogungbemi-team4-8eh8k0g2vez.ws-eu87.gitpod.io/'
+    'https://*.team4-empowered.herokuapp.com/'
     ]
 
 
