@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>profiles</h1>
+<div class="mt-5">
+
+<h1>User Profile</h1>
+<p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+
+{% if user.role == 'Mentor' %}
+<h2>Mentor Profile</h2>
+
+<p><strong>Area of Expertise:</strong> {{ user.mentor.area_of_expertise }}</p>
+<p><strong>Bio:</strong> {{ user.mentor.bio }}</p>
+<img src="{{ user.mentor.userpic }}" alt="profile picture">
+
+<a href="{% url 'home:update_profile' user.pk %}">Update</a>
+
+<!-- look at the model and render what you need -->
+</div>
+{% endif %}
 {% endblock %}

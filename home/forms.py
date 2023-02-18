@@ -1,5 +1,8 @@
 from allauth.account.forms import SignupForm
-from django.forms import CharField, TextInput, ChoiceField, Select
+from django.forms import CharField, TextInput, Textarea, ChoiceField, Select, ModelForm
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
+from .models import Mentor, Student, Parent
 
 
 class CustomSignUpForm(SignupForm):
@@ -28,3 +31,42 @@ class CustomSignUpForm(SignupForm):
         user.save()
         return user
 
+
+class MentorProfileForm(ModelForm):
+    class Meta:
+        """
+        Inner class for metadata options for the form.
+        """
+        model = Mentor
+        fields = ['area_of_expertise', 'bio', 'userpic']
+
+        widgets = {
+            'area_of_expertise': TextInput(attrs={
+                'placeholder': 'area of expertise'
+            }),
+            'bio': Textarea(attrs={
+                'style': 'height: 150px;',
+                'placeholder': ("tell about yourself")
+            }),
+            'userpic': TextInput(attrs={
+            })
+        }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Specifies layout to add image preview.
+        """
+        super(MentorProfileForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.add_input(Submit('save', 'Save',
+                              css_class='btn btn-primary px-5'))
+
+
+# Please create Student and Parent the same way: jusy rename fields accordingly
+
+class StudentProfileForm(ModelForm):
+    pass
+
+
+class ParentProfileForm(ModelForm):
+    pass
