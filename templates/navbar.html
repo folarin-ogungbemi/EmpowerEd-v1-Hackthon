@@ -38,7 +38,8 @@
                                 <ul class="navbar-nav">
                                     <!-- user name -->
                                     {% if user.is_authenticated %}
-                                        <a id="user-name" href="#" class="fw-semibold nav-link">
+                                        <a id="user-name" href=" {% url 'home:profile' user.pk %}"
+                                            class="fw-semibold nav-link">
                                             <i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}
                                         </a>
                                         <!-- messenger icon -->

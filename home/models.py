@@ -51,7 +51,7 @@ class Parent(models.Model):
     parent_id = models.AutoField(primary_key=True)
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
-    userpic = models.CharField(max_length=255)
+    userpic = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return f'{self.user_id}'
@@ -62,8 +62,8 @@ class Student(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     date_of_birth = models.DateField(default=timezone.now)
     interests = models.TextField()
-    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True)
-    userpic = models.CharField(max_length=255)
+    parent = models.ForeignKey(Parent, on_delete=models.SET_NULL, null=True, blank=True)
+    userpic = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return f'{self.user_id}'
