@@ -44,7 +44,7 @@ class Mentor(models.Model):
     userpic = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'{self.user_id.name} ({self.area_of_expertise} mentor)'
+        return f'{self.user_id} ({self.area_of_expertise} mentor)'
 
 
 class Parent(models.Model):
@@ -54,7 +54,7 @@ class Parent(models.Model):
     userpic = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'{self.user_id.name}'
+        return f'{self.user_id}'
 
 
 class Student(models.Model):
@@ -66,7 +66,7 @@ class Student(models.Model):
     userpic = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'{self.user_id.name}'
+        return f'{self.user_id}'
 
 
 class Relationship(models.Model):
@@ -75,7 +75,7 @@ class Relationship(models.Model):
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.mentor_id.user_id.name}|{self.student_id.user_id.name}'
+        return f'{self.mentor_id.user_id}|{self.student_id.user_id}'
 
 
 class Lesson(models.Model):
