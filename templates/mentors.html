@@ -2,4 +2,26 @@
 {% load static %}
 {% block content %}
 <h1>Mentors</h1>
+
+{% if 'mentor_list' %}
+<div class="col-10">
+
+    {% for mentor in mentor_list %}
+    <div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div><img src="{{ mentor.userpic }}"></div>
+                <div class="text-primary">{{ mentor }}</div>
+                <div class="text-primary">{{ mentor.area_of_expertise }}</div>
+                <div class="text-primary">{{ mentor.bio }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% else %}
+<p>Ooops, nothing here.</p>
+{% endif %}
+
 {% endblock %}
