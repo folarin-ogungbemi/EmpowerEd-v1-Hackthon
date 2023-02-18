@@ -3,7 +3,7 @@ from . import models
 
 # Register your models here.
 from django.contrib import admin
-from .models import User, Student, Mentor, Lesson, Parent, Relationship
+from .models import User, Student, Mentor, Lesson, Parent, Relationship, Resource
 
 
 @admin.register(User)
@@ -51,3 +51,9 @@ class LessonAdmin(admin.ModelAdmin):
 class RelationshipAdmin(admin.ModelAdmin):
     list_display = ('mentor_id', 'student_id')
     search_fields = ('mentor_id', 'student_id')
+
+
+@admin.register(Resource)
+class ResourceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'url')
+    search_fields = ('name', 'url')

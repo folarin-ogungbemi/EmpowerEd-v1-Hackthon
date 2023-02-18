@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Mentor
+from .models import Mentor, Resource
 
 
 class LandingView(generic.TemplateView):
@@ -9,8 +9,9 @@ class LandingView(generic.TemplateView):
     template_name = "index.html"
 
 
-class ResourcesView(generic.TemplateView):
+class ResourcesView(generic.ListView):
     template_name = "resources.html"
+    model = Resource
 
 
 class MentorsView(generic.ListView):
