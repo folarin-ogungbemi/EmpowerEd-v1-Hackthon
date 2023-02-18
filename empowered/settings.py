@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
     # local-apps
     'home',
+    'chat_backend'
 ]
 SITE_ID = 1
 MIDDLEWARE = [
