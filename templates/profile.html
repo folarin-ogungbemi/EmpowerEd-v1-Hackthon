@@ -13,6 +13,7 @@
 <p><strong>Bio:</strong> {{ user.mentor.bio }}</p>
 <img src="{{ user.mentor.userpic }}" alt="profile picture">
 
+<a href="{% url 'home:update_profile' user.pk %}">Update</a>
 
 <!-- look at the model and render what you need -->
 </div>

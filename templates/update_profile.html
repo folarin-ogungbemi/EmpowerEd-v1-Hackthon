@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<main>
+    <section>
+        <div class="row mx-1">
+            <div class="container-fluid col-lg-8 mt-1">
+                <div class="d-flex align-items-center">
+                    <h1 class="section-title text-start pb-0">Edit Profile</h1>
+
+                </div>
+                <h2>{{ request.user }}</h2>
+
+                {% csrf_token %}
+                {% crispy form %}
+
+            </div>
+        </div>
+    </section>
+    {% endblock content %}

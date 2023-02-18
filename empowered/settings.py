@@ -36,7 +36,9 @@ else:
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.8000-folarinogungbemi-team4-8eh8k0g2vez.ws-eu87.gitpod.io/'
+    'https://*.8000-folarinogungbemi-team4-8eh8k0g2vez.ws-eu87.gitpod.io/',
+    'https://*.8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io',
+    'https://*.team4-empowered.herokuapp.com/'
     ]
 
 
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
+    'crispy_bootstrap5',
 
     # local-apps
     'home',
@@ -96,7 +99,11 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+# CRISPY FORMS
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 CHANNEL_LAYERS = {
     "default": {
