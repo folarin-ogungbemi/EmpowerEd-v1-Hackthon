@@ -3,10 +3,19 @@
 {% block content %}
 
 <!-- Hero -->
-<!-- <img src="https://assets.randomactsofkindness.org/site/mktn.jpg" class="m-5" alt="hero"> -->
-<canvas class="background"></canvas>
-<main>
-
-</main>
+<div id="hero">
+    <canvas class="hero-bg"></canvas>
+<!--hero callout-->
+<div class="container hero-content">
+    <div class="row">
+        <div class="col-12">
+            <section class="container">
+                <h2 class="head-text"><span>Empower</span><br><span>the future</span></h2>
+                <a class="btn action-btn rounded-pill mb-3" href="{% url 'home:resources' %}" role="button">Start Now</a>
+                <p class="lead">Join us in providing access to education for all!</p>
+            </section>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
