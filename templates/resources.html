@@ -1,27 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>Resources</h1>
-
-{% if 'resource_list' %}
-<div class="col-10">
-
-{% for resource in resource_list %}
-    <div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="text-primary">{{ resource.name }}</div>
-                <div class="text-primary">{{ resource.url }}</div>
-                <div class="text-primary">{{ resource.about }}</div>
-                <div><img src="{{ resource.img }}"></div>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-12 my-5">
+        <h1 class="text-center">Resources</h1>
     </div>
-{% endfor %}
+</div>
 
- </div>
- {% else %}
- <p>Ooops, nothing here.</p>
- {% endif %}
+<div class="row">
+    {% if 'resource_list' %}
+    <div class="col-8 mx-auto">
+        {% for resource in resource_list %}
+            <div class="container card mb-5 p-3">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="{{ resource.img }}" class="card-img-top" alt="{{ resource.name }}">
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <h5 class="card-title text-dark">{{ resource.name }}</h5>
+                        <p class="card-text text-dark">{{ resource.about }}</p>
+                        <a href="{{ resource.url }}" class="btn btn-success ms-auto align-self-end">Start now</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Ooops, nothing here.</p>
+    {% endif %}
+</div>
 
 {% endblock %}
