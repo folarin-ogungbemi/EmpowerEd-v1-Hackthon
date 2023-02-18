@@ -11,4 +11,25 @@
     GENERAL STYLE
     *********** */
 /*-----------General--------------*/
+.top-nav{
+    background-color: #fff;
+    backdrop-filter: blur(20px);
+    box-shadow: 0.5px 0.5px 10px 0.7px rgba(0, 0, 0, 0.6);
+    width: 100%;
+}
 
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(https://assets.randomactsofkindness.org/site/mktn.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+@media (max-width:900px){
+    .background{
+        background-size: cover;
+    }
+}
