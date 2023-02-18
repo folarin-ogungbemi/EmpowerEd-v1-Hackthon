@@ -1,0 +1,35 @@
+{% load static %}
+<footer>
+<div class = "container p-3 w-100 fixed-bottom text-center text-bg-light m-0" style="min-width: 100%;">
+    <div class="row align-items-start">
+        <div class="col-4">
+            <div class="d-flex flex-column justify-content-center text-wrap">
+                <H3>Social media links:</H3>
+                <div class="p-1"><i class="fa-brands fa-facebook"><a class="nav-link" href="https://www.facebook.com/" target="_blank"></i>Join our community on Facebook!</a></div>
+                <div class="p-1"><i class="fa-brands fa-twitter"><a class="nav-link" href="https://www.Twitter.com/" target="_blank"></i>Keep up to date with the latest news!</a></div>
+                <div class="p-1"><i class="fa-brands fa-instagram"><a class="nav-link" href="https://www.Instagram.com/" target="_blank"></i>Follow us on Instagram!</a></div>
+                <div class="p-1"><i class="fa-brands fa-youtube"><a class="nav-link" href="https://www.Youtube.com/" target="_blank"></i>Watch our online classes and webinars online!</a></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="d-flex flex-column justify-content-center text-wrap">
+                <h3>Helpful links:</h3>
+                <div class="p-1"><a class="nav-link" href="https://www.curajoy.org" type="_blank">CURAJOY</class></a></div>
+                <div class="p-1"><a class="nav-link" href="https://www.nhs.uk/conditions/autism" type="_blank">AUTISM</a></div>
+                <div class="p-1"><a class="nav-link" href="https://walk.cafod.org.uk" type="_blank">CAFOD</a></div>
+                <div class="p-1"><a class="nav-link" href="https://www.scope.org.uk" type="_blank">SCOPE</a></div>
+                <div class="p-1"><a class="nav-link" href="https://uk.ixl.com" type="_blank">UK.IXL</a></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="d-flex flex-column justify-content-center text-wrap">
+                <h3>Internal links:</h3>
+                <a class="nav-link" href="{% url 'home:home' %}" title="">Home</a>
+                <a class="nav-link" href="{% url 'home:resources' %}" title="">Resources</a>
+                <a class="nav-link" href="{% url 'home:mentors' %}" title="">Mentors</a>
+                <a class="nav-link" href="{% url 'home:about' %}" title="">About</a>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
