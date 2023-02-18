@@ -84,3 +84,14 @@ class Lesson(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+
+
+class Resource(models.Model):
+    name = models.CharField(max_length=60)
+    url = models.CharField(max_length=255)
+    about = models.TextField()
+    img = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.name}'
+
