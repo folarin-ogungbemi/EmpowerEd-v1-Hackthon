@@ -21,6 +21,7 @@ class ResourcesView(generic.ListView):
 class MentorsView(generic.ListView):
     template_name = "mentors.html"
     model = Mentor
+    paginate_by = 8
 
 
 class AboutView(generic.TemplateView):

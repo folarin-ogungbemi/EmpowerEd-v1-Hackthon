@@ -113,3 +113,9 @@
 .reg-content{
     padding: 1rem;
 }
+
+/* pages */
+.page{
+    margin-top: 20vh;
+    height: 80vh;
+}

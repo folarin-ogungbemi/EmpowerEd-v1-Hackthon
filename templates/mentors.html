@@ -1,27 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>Mentors</h1>
+<div class="container page">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <h2 class="text-uppercase">Mentors</h2>
+        </div>
+    </div>
 
-{% if 'mentor_list' %}
-<div class="col-10">
-
-    {% for mentor in mentor_list %}
-    <div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div><img src="{{ mentor.userpic }}"></div>
-                <div class="text-primary">{{ mentor }}</div>
-                <div class="text-primary">{{ mentor.area_of_expertise }}</div>
-                <div class="text-primary">{{ mentor.bio }}</div>
+    {% if 'mentor_list' %}
+    <div class="col-10">
+        <div class="container all-mentors my-5">
+            <div class="row">
+                {% for mentor in mentor_list %}
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    <div class="mentor-card my-3 mx-auto">
+                        <a href="#">
+                            <div class="container mentor-image py-4 px-3">
+                                <img src="{{ mentor.userpic }}" alt="mentor image" width="200" height="280">
+                            </div>
+                        </a>
+                        <div class="container">
+                            <div class="container mentor-info">
+                                 <a class="text-decoration-none" href="#">
+                                     <small class="mentor-name">{{ mentor }}</small>
+                                 </a>
+                                <p class="mentor-exp"><strong>{{ mentor.area_of_expertise }}</strong></p>
+                                <p class="mentor-bio">{{ mentor.bio }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:1 %}
+                    <div class="col-12 d-sm-none">
+                        <hr">
+                    </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="col-12 d-none d-sm-block d-md-block d-lg-none">
+                        <hr">
+                    </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:3 %}
+                <div class="col-12 d-none d-lg-block d-xl-none">
+                    <hr>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:4 %}
+                    <div class="col-12 d-none d-xl-block">
+                        <hr>
+                    </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
-    {% endfor %}
-
-</div>
-{% else %}
-<p>Ooops, nothing here.</p>
-{% endif %}
-
+    {% else %}
+        <p>Ooops, nothing here.</p>
+    {% endif %}
 {% endblock %}
