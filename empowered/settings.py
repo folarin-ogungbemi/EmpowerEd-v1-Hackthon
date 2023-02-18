@@ -36,8 +36,9 @@ else:
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/'
+    'https://*.8000-folarinogungbemi-team4-8eh8k0g2vez.ws-eu87.gitpod.io/'
     ]
+
 
 # Application definition
 

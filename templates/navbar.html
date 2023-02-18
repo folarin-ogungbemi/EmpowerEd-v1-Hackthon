@@ -1,40 +1,67 @@
-<header id="header" class="fixed-top">
-    <div class="container d-flex justify-content-between">
-
-        <div class="justify-self-start mt-2">
-            <span><a href="{% url 'home:home' %}">EmpowerEd</a></span>
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <div class="row w-100">
+                <div class="col-3">
+                    <!--logo-->
+                    <a class="navbar-brand ms-3" href="{% url 'home:home' %}">EmpowerEd</a>
+                </div>
+                <div class="col-9">
+                    <!--hamburger-->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- nav items-->
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <div class="row w-100">
+                            <div class="col-8 d-flex justify-content-around">
+                                <ul class="navbar-nav gap-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="{% url 'home:resources' %}" title="">Resources</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'home:mentors' %}" title="">Mentors</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'home:about' %}" title="">About</a>
+                                    </li>
+                                    <!-- <li class="nav-item"> -->
+                                        <!-- <a class="nav-link" href="./contact.html" title="">Contact</a> -->
+                                    <!-- </li> -->
+                                </ul>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end">
+                                <ul class="navbar-nav">
+                                    <!-- user name -->
+                                    {% if user.is_authenticated %}
+                                        <a id="user-name" href="#" class="fw-semibold nav-link">
+                                            <i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}
+                                        </a>
+                                        <!-- messenger icon -->
+                                        <a href="#" class="nav-link" aria-label="Messages">
+                                            <i class='bx bx-envelope fs-6 text position-relative' id="messages"></i>
+                                        </a>
+                                    {% endif %}
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                                    {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Navbar -->
-         <nav class="navbar sticky">
-             <div class="container d-flex ">
-                
-                     <ul class="d-flex list-inline">
-                         <li><a class="me-5 list-inline-item" href="{% url 'home:resources' %}" title="">Resources</a>
-                         </li>
-                         <li><a class="me-5 list-inline-item" href="{% url 'home:mentors' %}" title="">Mentors</a></li>
-                         <li><a class="me-5 list-inline-item" href="{% url 'home:about' %}" title="">About</a></li>
-                         <!-- <li><a class="mx-5" href="./contact.html" title="">Contact</a></li> -->
-                          <!-- user name -->
-                          {% if user.is_authenticated %}
-                          <span id="user-name" class="ms-5 me-3 list-inline-item"><a href="#"
-                                  class="fw-semibold">
-                                  <i class='bx bxs-user-circle'></i>&nbsp;{{ user }}</a>
-                          </span>
-                          <!-- messenger icon -->
-                          <a href="#" class="px-0 me-2" aria-label="Messages">
-                              <i class='bx bx-envelope fs-6 text position-relative' id="messages"></i>
-                          </a>
-                            {% endif %}
-                         {% if user.is_authenticated %}
-                         <li><a class="me-5 list-inline-item" href="{% url 'account_logout' %}">Logout</a></li>
-                         {% else %}
-                         <li><a class="me-5 list-inline-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                         <li><a class="me-5 list-inline-item" href="{% url 'account_login' %}">Login</a></li>
-                         {% endif %}
-                     </ul>
-
-             </div>
-         </nav>
-    </div>
+      </nav>
 </header>
+
+
