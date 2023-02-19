@@ -22,5 +22,17 @@
   },
   "include": [
     "src"
-  ]
+  ],
+
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-typescript",
+        {
+          "isTsx": true,
+          "extensions": "all"
+        }
+      ]
+    ]
+  }
 }

@@ -156,11 +156,19 @@
     padding: 1rem;
 }
 
+/* chat */
+#js-framework-home {
+    overflow-y: scroll;
+    height: 80vh;
+    margin-bottom: -30px;
+    width: 50vw;
+}
 
 /*  ***********
     MENTOR STYLE
     *********** */
 /* mentor-card*/
+
 .mentor-card{
     position: relative;
     width: 240px;
@@ -184,6 +192,16 @@
 
 .mentor-card img{
     border-radius: 5px;
+}
+
+
+main {
+    min-height: 100vh;
+}
+
+/* Notifications */
+#count {
+    font-size: 10px;
 }
 
 /*  *****************
@@ -264,3 +282,4 @@
         scrollbar-width: thin;
     }
 }
+
