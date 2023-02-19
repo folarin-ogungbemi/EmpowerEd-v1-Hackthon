@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect, useRef}  from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { Link, useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -19,6 +19,10 @@ export default function Chat() {
     const [ to_user, setToUser ] = useState("");
     const [page, setPage] = useState(2);
     const [hasMoreMessages, setHasMoreMessages] = useState(false);
+    const messagesEndRef = useRef(null);
+    const scrollToBottom = () => {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
   
     const { readyState, sendJsonMessage } = useWebSocket(`wss://8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/messages/chat/${conversationName}`, {
       onOpen: () => {
@@ -56,6 +60,8 @@ export default function Chat() {
       [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
     }[readyState];
 
+    useEffect(scrollToBottom, [messageHistory]);
+
     useEffect(() => {
       if (connectionStatus === "Open") {
         sendJsonMessage({
@@ -87,6 +93,8 @@ export default function Chat() {
         setMessageHistory((prev: MessageModel[]) => prev.concat(data.results));
       }
     }
+
+    const ID = JSON.parse(document.getElementById('id').textContent);
   
     function handleChangeMessage(e: any) {
       setMessage(e.target.value)
@@ -128,28 +136,6 @@ export default function Chat() {
         </Link>
           {to_user.first_name} {to_user.last_name}
       </Card.Header>
-        {/* <ListGroup 
-        id="scrollableDiv"
-        style={{
-          // overflowY: "scroll"
-          }}>
-     
-          <InfiniteScroll
-            dataLength={messageHistory.length}
-            next={fetchMessages}
-            className="" 
-            // inverse={false}
-            hasMore={hasMoreMessages}
-            loader={<ChatLoader />}
-            scrollableTarget="scrollableDiv"
-          >
-            {messageHistory.map((message: MessageModel) => (
-              <Message key={message.id} message={message} />
-            ))}
-          </InfiniteScroll>
-  
-        </ListGroup> */}
-
         <div
           id="scrollableDiv"
           style={{
@@ -158,7 +144,6 @@ export default function Chat() {
             flexDirection: 'column-reverse',
           }}>
 
-          <div>
             <InfiniteScroll
               dataLength={messageHistory.length}
               next={fetchMessages}
@@ -171,13 +156,14 @@ export default function Chat() {
               loader={<ChatLoader />}
               scrollableTarget="scrollableDiv"
             >
+              <div ref={messagesEndRef} />
               {messageHistory.map((message: MessageModel) => (
                 <Message key={message.id} message={message} />
               ))}
             </InfiniteScroll>
-          </div>
         </div>
       </Card>
+      
       <div className="d-flex">
         <Form.Control 
           style={{ 

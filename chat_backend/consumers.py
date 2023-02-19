@@ -43,7 +43,7 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.channel_name,
         )
 
-        messages = self.conversation.messages.all().order_by("-timestamp")[0:10]
+        messages = self.conversation.messages.all().order_by("-timestamp")[0:50]
         user = self.get_receiver()
         message_count = self.conversation.messages.all().count()
         self.send_json(
@@ -51,7 +51,7 @@ class ChatConsumer(JsonWebsocketConsumer):
                 "type": "last_50_messages",
                 "messages": MessageSerializer(messages, many=True).data,
                 "to_user": UserSerializer(user).data,
-                "has_more": message_count > 10,
+                "has_more": message_count > 50,
             }
         )
 
