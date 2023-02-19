@@ -40,7 +40,13 @@
                                     {% if user.is_authenticated %}
                                         <div class="d-flex gap-2">
                                             <a id="user-name" href="{% url 'home:profile' user.pk %}" class="fw-semibold nav-link"><i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}</a>
-                                            <a href="#" class="nav-link" aria-label="Messages"><i class='bx bx-envelope fs-4' id="messages"></i></a>
+                                             <!-- messenger icon -->
+                                             <a href="{% url 'chat_backend:conv_list' %}" class="nav-link"
+                                                 aria-label="Messages">
+                                                 <i class='bx bx-envelope fs-4 text position-relative' id="messages">
+                                                     {% include "unread.html" %}
+                                                 </i>
+                                             </a>
                                         </div>
                                     {% endif %}
                                     {% if user.is_authenticated %}
