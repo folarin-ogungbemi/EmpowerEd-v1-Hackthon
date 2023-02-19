@@ -8,7 +8,7 @@ from .models import User, Student, Mentor, Lesson, Parent, Relationship, Resourc
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email')
+    list_display = ('first_name', 'last_name', 'email', 'pk')
     search_fields = ('username',
                      'email',
                      'relationships__child__user__username',
