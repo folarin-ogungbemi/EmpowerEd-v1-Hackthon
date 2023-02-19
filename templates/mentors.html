@@ -15,19 +15,15 @@
                 {% for mentor in mentor_list %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="mentor-card my-3 mx-auto">
-                        <a href="#">
+                        <a href="{% url 'home:profile' mentor.user_id.pk %}">
                             <div class="container mentor-image py-4 px-3">
                                 <img src="{{ mentor.userpic }}" alt="mentor image" width="200" height="280">
                             </div>
                         </a>
-                        <div class="container">
-                            <div class="container mentor-info">
-                                 <a class="text-decoration-none" href="#">
-                                     <small class="mentor-name">{{ mentor }}</small>
-                                 </a>
-                                <p class="mentor-exp"><strong>{{ mentor.area_of_expertise }}</strong></p>
-                                <p class="mentor-bio">{{ mentor.bio }}</p>
-                            </div>
+                        <div class="container mentor-info ms-0 ps-1">
+                            <a class="text-decoration-none text-dark fs-5 fw-semibold" href="{% url 'home:profile' mentor.user_id.pk %}">{{ mentor.user_id }}</a>
+                            <p>{{ mentor.area_of_expertise }}</p>
+                            <a href="#" class="btn global-action-btn rounded-pill">contact mentor</a>
                         </div>
                     </div>
                 </div>
