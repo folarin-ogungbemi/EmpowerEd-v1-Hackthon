@@ -19,8 +19,8 @@ export function Message({ message }: { message: MessageModel }) {
   return (
       <Alert
         className={classNames(
-        "mt-1 px-3 py-1 shadow",
-        id === message.to_user.id ? "align-self-start" : "align-self-end"
+        "mt-1 mb-1 px-3 py-1 shadow",
+        id === message.to_user.pk ? "align-self-start me-5" : "align-self-end ms-5"
       )}
         style={{ 
           width: 'fit-content',
@@ -28,7 +28,7 @@ export function Message({ message }: { message: MessageModel }) {
           wordBreak: 'break-word'
       }}
         variant={
-          id === message.to_user.id ? "warning" : "primary"
+          id === message.to_user.pk ? "info" : "primary"
         }>
       
         <div>

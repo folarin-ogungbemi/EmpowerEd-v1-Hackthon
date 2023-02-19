@@ -44,7 +44,7 @@ export default function Conversations() {
       <Card>
       <Card.Header
       style={{
-        fontSize: "21px",
+        fontSize: "18px",
         background: "#499ef5",
         color: "#f8fbfe"
     }}
@@ -58,7 +58,6 @@ export default function Conversations() {
           key={createConversationName(c.other_user.pk)}>
         <Link 
           to={`/chat/${createConversationName(c.other_user.pk)}`}
-          
         >
           <div className="px-3">
             <div

@@ -1,14 +1,14 @@
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { Link, useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InfiniteScroll from "react-infinite-scroll-component";
+import { ChatLoader } from "./ChatLoader.tsx";
 import { MessageModel } from "../models/Message";
-// @ts-ignore 
 import { Message } from "./Message.tsx";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-import { UserModel } from '../models/User';
 
 
 export default function Chat() {
@@ -16,7 +16,9 @@ export default function Chat() {
     const [messageHistory, setMessageHistory] = useState<any>([]);
     const [message, setMessage] = useState("");
     const { conversationName } = useParams();
-      const [to_user, setToUser] = useState<UserModel>();
+    const [ to_user, setToUser ] = useState("");
+    const [page, setPage] = useState(2);
+    const [hasMoreMessages, setHasMoreMessages] = useState(false);
   
     const { readyState, sendJsonMessage } = useWebSocket(`wss://8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/messages/chat/${conversationName}`, {
       onOpen: () => {
@@ -32,15 +34,16 @@ export default function Chat() {
             setWelcomeMessage(data.message)
             break;
           case 'chat_message_echo':
-            setMessageHistory((prev: any) => prev.concat(data.message));
+            setMessageHistory((prev: any) => [data.message, ...prev]);
             break;
           default:
             console.error('Unknown message type!');
             break;
-          case "last_50_messages":
-            setMessageHistory(data.messages);
-            setToUser(data.to_user)
-            break;
+            case "last_50_messages":
+              setMessageHistory(data.messages);
+              setHasMoreMessages(data.has_more);
+              setToUser(data.to_user)
+              break;
         }
       }
     });
@@ -53,37 +56,127 @@ export default function Chat() {
       [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
     }[readyState];
 
+    useEffect(() => {
+      if (connectionStatus === "Open") {
+        sendJsonMessage({
+          type: "read_messages",
+        });
+      }
+    }, [connectionStatus, sendJsonMessage]);
+  
+    async function fetchMessages() {
+      const apiRes = await fetch(
+        `https://8000-okserm-helpu-4vq7cec76g9.ws-eu74.gitpod.io/api/messages/?conversation=${conversationName}&page=${page}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (apiRes.status === 200) {
+        const data: {
+          count: number;
+          next: string | null; 
+          previous: string | null; 
+          results: MessageModel[];
+        } = await apiRes.json();
+        setHasMoreMessages(data.next !== null);
+        setPage(page + 1);
+        setMessageHistory((prev: MessageModel[]) => prev.concat(data.results));
+      }
+    }
+  
     function handleChangeMessage(e: any) {
       setMessage(e.target.value)
     }
   
     const handleSubmit = () => {
+      if (message.length === 0) return;
+      if (message.length > 512) return;
       sendJsonMessage({
         type: "chat_message",
         message,
       })
       setMessage("")
-    }
+      }
   
     return (
       <div className="ms-2 me-2" >        
-      <Card>
+      <Card 
+      style={{
+        height: "75vh",
+        display: "flex",
+        justifyContent: "space-between",
+        }}>
       <Card.Header
       style={{
         background: "#499ef5",
-        color: "#f8fbfe"
-    }}
+        color: "#f8fbfe",
+        }}
       className="px-4">
-        <Link to={"/"}>
-        <i className='bx bxs-chevron-left bx-flip-vertical px-2 pb-1' style={{fontSize: "21px", color: "#f8fbfe"}} ></i>
+        <Link 
+        to={"/"}>
+        <i 
+        className='bx bxs-chevron-left bx-flip-vertical px-2 pb-1' 
+        style={{
+          fontSize: "21px",
+          color: "#f8fbfe"
+          }} >
+          </i>
         </Link>
-          {to_user?.first_name} {to_user?.last_name}
+          {to_user.first_name} {to_user.last_name}
       </Card.Header>
-        <ListGroup>
-          {messageHistory.map((message: MessageModel) => (
+        {/* <ListGroup 
+        id="scrollableDiv"
+        style={{
+          // overflowY: "scroll"
+          }}>
+     
+          <InfiniteScroll
+            dataLength={messageHistory.length}
+            next={fetchMessages}
+            className="" 
+            // inverse={false}
+            hasMore={hasMoreMessages}
+            loader={<ChatLoader />}
+            scrollableTarget="scrollableDiv"
+          >
+            {messageHistory.map((message: MessageModel) => (
               <Message key={message.id} message={message} />
-          ))}
-        </ListGroup>
+            ))}
+          </InfiniteScroll>
+  
+        </ListGroup> */}
+
+        <div
+          id="scrollableDiv"
+          style={{
+            overflow: 'auto',
+            display: 'flex',
+            flexDirection: 'column-reverse',
+          }}>
+
+          <div>
+            <InfiniteScroll
+              dataLength={messageHistory.length}
+              next={fetchMessages}
+              className="d-flex"
+              style={{
+                flexDirection: "column-reverse"
+              }}
+              inverse={true}
+              hasMore={hasMoreMessages}
+              loader={<ChatLoader />}
+              scrollableTarget="scrollableDiv"
+            >
+              {messageHistory.map((message: MessageModel) => (
+                <Message key={message.id} message={message} />
+              ))}
+            </InfiniteScroll>
+          </div>
+        </div>
       </Card>
       <div className="d-flex">
         <Form.Control 
@@ -95,10 +188,17 @@ export default function Chat() {
           onChange={handleChangeMessage}
           value={message}
           />
-        <Button 
-          variant="success" 
-          className="mb-1"
-          onClick={handleSubmit}>Send</Button>
+        <Button
+          style={{
+            fontSize: "20px",
+            border: "0",
+            background: "none",
+            marginLeft: "-45px"
+          }}
+          onClick={handleSubmit}>
+            <i className='bx bxs-send bx-flip-vertical' 
+            style={{color:'#2680e0'}} ></i>
+          </Button>
         </div>
       </div>
     )
