@@ -115,9 +115,40 @@
 }
 
 /* pages */
-.page{
-    margin-top: 15vh;
-    height: 80vh;
+.home{
+    margin-top: 30vh;
+    height: 70vh;
+    margin-bottom: 0rem;
+}
+.resouces{
+    margin-top: 5vh;
+    height: 75vh;
+    margin-bottom: 30rem;
+}
+.mentor{
+    margin-top: 5vh;
+    height: 70vh;
+    margin-bottom: 0rem;
+}
+.about{
+    margin-top: 5vh;
+    height: 70vh;
+    margin-bottom: 0rem;
+}
+.signup{
+    margin-top: 5vh;
+    height: 71vh;
+    margin-bottom: 0rem;
+}
+.signin{
+    margin-top: 5vh;
+    height: 70vh;
+    margin-bottom: 1rem;
+}
+.signout{
+    margin-top: 5vh;
+    height: 70vh;
+    margin-bottom: 1rem;
 }
 
 .mentor-card{
