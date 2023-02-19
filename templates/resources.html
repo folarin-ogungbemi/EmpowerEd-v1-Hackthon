@@ -14,12 +14,12 @@
         {% for resource in resource_list %}
             <div class="container resource-card mb-5 p-3">
                 <div class="row">
-                    <div class="col-6">
-                        <img src="{{ resource.img }}" class="card-img-top" alt="{{ resource.name }}">
+                    <div class="col-12 col-md-6">
+                        <img src="{{ resource.img }}" class="img-fluid" alt="{{ resource.name }}">
                     </div>
-                    <div class="col-6 d-flex flex-column">
-                        <h5 class="card-title text-dark">{{ resource.name }}</h5>
-                        <p class="card-text text-dark">{{ resource.about }}</p>
+                    <div class="col-12 col-md-6 d-flex flex-column gap-2">
+                        <p class="card-title fs-5 fw-bold mt-1">{{ resource.name }}</p>
+                        <p class="card-text">{{ resource.about }}</p>
                         <a href="{{ resource.url }}" class="btn global-action-btn rounded-pill ms-auto align-self-end">Start now</a>
                     </div>
                 </div>
