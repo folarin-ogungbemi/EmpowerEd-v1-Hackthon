@@ -37,7 +37,6 @@
 }
 
 /* button */
-
 .global-active-btn{
     background-color:var(--col-sec);
     color: var(--col-light);
@@ -59,6 +58,12 @@
 .hero-action-btn:hover{
     background-color:var(--col-pry-light) !important;
     color: var(--col-light) !important;
+}
+
+/* form */
+.asteriskField{
+    color: #dc3545;
+    padding: 0.1rem;
 }
 
 /*  ***********
