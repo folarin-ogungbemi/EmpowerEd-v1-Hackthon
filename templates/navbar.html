@@ -5,7 +5,7 @@
             <div class="row w-100">
                 <div class="col-3">
                     <!--logo-->
-                    <a class="navbar-brand ms-3" href="{% url 'home:home' %}">EmpowerEd</a>
+                    <a class="navbar-brand ms-5" href="{% url 'home:home' %}">EmpowerEd</a>
                 </div>
                 <div class="col-9">
                     <!--hamburger-->
@@ -35,17 +35,13 @@
                                 </ul>
                             </div>
                             <div class="col-4 d-flex justify-content-end">
-                                <ul class="navbar-nav">
-                                    <!-- user name -->
+                                <ul class="navbar-nav gap-2">
+                                    <!-- user -->
                                     {% if user.is_authenticated %}
-                                        <a id="user-name" href=" {% url 'home:profile' user.pk %}"
-                                            class="fw-semibold nav-link">
-                                            <i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}
-                                        </a>
-                                        <!-- messenger icon -->
-                                        <a href="#" class="nav-link" aria-label="Messages">
-                                            <i class='bx bx-envelope fs-6 text position-relative' id="messages"></i>
-                                        </a>
+                                        <div class="d-flex gap-2">
+                                            <a id="user-name" href="{% url 'home:profile' user.pk %}" class="fw-semibold nav-link"><i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}</a>
+                                            <a href="#" class="nav-link" aria-label="Messages"><i class='bx bx-envelope fs-4' id="messages"></i></a>
+                                        </div>
                                     {% endif %}
                                     {% if user.is_authenticated %}
                                     <li class="nav-item">

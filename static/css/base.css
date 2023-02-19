@@ -43,6 +43,12 @@
     --col-light:#fff;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* pages */
 .page{
     margin-top: 15vh;
@@ -191,6 +197,7 @@
     font-size: x-large;
     margin-block: auto;
 }
+
 .user-profile .profile > a{
     margin-block: auto;
 }
