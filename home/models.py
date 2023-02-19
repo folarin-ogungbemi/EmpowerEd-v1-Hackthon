@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from .managers import UserManager
@@ -24,16 +26,16 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
-    def save(self, *args, **kwargs):
-        is_new = self.pk is None
-        super().save(*args, **kwargs)
-        if is_new:
-            if self.role == 'Student':
-                Student.objects.create(user_id=self)
-            elif self.role == 'Parent':
-                Parent.objects.create(user_id=self)
-            elif self.role == 'Mentor':
-                Mentor.objects.create(user_id=self)
+    # def save(self, *args, **kwargs):
+    #     is_new = self.pk is None
+    #     super().save(*args, **kwargs)
+    #     if is_new:
+    #         if self.role == 'Student':
+    #             Student.objects.create(user_id=self)
+    #         elif self.role == 'Parent':
+    #             Parent.objects.create(user_id=self)
+    #         elif self.role == 'Mentor':
+    #             Mentor.objects.create(user_id=self)
 
 
 class Mentor(models.Model):
@@ -95,3 +97,17 @@ class Resource(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Creates a User Profile instance when a new Custom User is created.
+    """
+    print(f"User role: {instance.role}")
+    if created:
+        if instance.role == 'Student':
+            Student.objects.create(user_id=instance)
+        elif instance.role == 'Parent':
+            Parent.objects.create(user_id=instance)
+        elif instance.role == 'Mentor':
+            Mentor.objects.create(user_id=instance)
