@@ -16,11 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from rest_framework import routers
 from django.conf.urls.static import static
+from chat_backend.api.views import (ConversationViewSet,
+                                    MessageViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('messages/', include('chat_backend.urls', namespace="messages")),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+router = routers.DefaultRouter()
+
+router.register("api/conversations", ConversationViewSet,
+                basename='Conversations')
+router.register("api/messages", MessageViewSet, basename='Messages')
+
+urlpatterns += router.urls
