@@ -29,6 +29,14 @@ class CustomSignUpForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.role = self.cleaned_data['role']
         user.save()
+
+        if user.role == 'Student':
+            Student.objects.create(user_id=user)
+        elif user.role == 'Parent':
+            Parent.objects.create(user_id=user)
+        elif user.role == 'Mentor':
+            Mentor.objects.create(user_id=user)
+
         return user
 
 

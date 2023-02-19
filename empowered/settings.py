@@ -37,7 +37,8 @@ else:
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.8000-folarinogungbemi-team4-8eh8k0g2vez.ws-eu87.gitpod.io/',
-    'https://*.8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io',
+    'https://*.8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/',
+    'https://*.8000-wierdlygoodco-empowered-gq4xmaou0mg.ws-eu87.gitpod.io',
     'https://*.team4-empowered.herokuapp.com/'
     ]
 
