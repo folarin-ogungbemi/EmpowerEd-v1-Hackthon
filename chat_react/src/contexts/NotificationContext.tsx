@@ -1,5 +1,5 @@
 import Alert from 'react-bootstrap/Alert';
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 
 const DefaultProps = {
@@ -47,13 +47,13 @@ export const NotificationContextProvider: React.FC<{ children: ReactNode }> = ({
           case 'new_message_notification':
             setUnreadMessageCount((count) => (count += 1));
             let from_user = eachUser.find(
-              (x: any) => x[0] == data.message.from_user.pk
+              (x: any) => x[0] == data.message.from_user.id
             );
             if (from_user == undefined) {
-              eachUser.push([data.message.from_user.pk, 1]);
+              eachUser.push([data.message.from_user.id, 1]);
             } else {
               eachUser.find(
-                (x: any) => x[0] == data.message.from_user.pk
+                (x: any) => x[0] == data.message.from_user.id
               )[1] += 1;
             }
             break;
