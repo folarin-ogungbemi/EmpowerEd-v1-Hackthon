@@ -127,7 +127,7 @@
 /* pages */
 .page{
     margin-top: 15vh;
-    height: 80vh;
+    min-height: 85vh;
 }
 
 /*-------- mentor card ---------*/
@@ -176,4 +176,14 @@
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
     max-width: 10rem;
     max-height: 10rem;
+}
+
+/*  *****************
+    FOOTER-LINKS STYLE
+    *************** */
+.footer-links{
+    min-width: 100%;
+    background: var(--col-light);
+    box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
 }
