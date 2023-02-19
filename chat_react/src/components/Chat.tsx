@@ -16,6 +16,7 @@ import { Message } from './Message.tsx';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { UserModel } from '../models/User';
+import { url } from 'inspector';
 
 export interface NotificationProps {
   unreadMessageCount: number;
@@ -186,13 +187,13 @@ export default function Chat() {
           height: '75vh',
           display: 'flex',
           justifyContent: 'space-between',
-          background: '',
+          background: "url('https://i.imgur.com/0ndtScF.png')",
           backgroundRepeat: 'repeat',
         }}
       >
         <Card.Header
           style={{
-            background: '#2f2d2d',
+            background: '#1ab175',
             color: '#f8fbfe',
           }}
           className="px-4"
@@ -210,7 +211,11 @@ export default function Chat() {
             target="_blank"
             aria-label="View user's profile (opens in a new tab)"
             title="View user's profile (opens in a new tab)"
-            className="react-link"
+            className="react-link ms-2"
+            style={{
+                fontSize: '21px',
+                color: '#f8fbfe',
+              }}
           >
             {to_user?.first_name} {to_user?.last_name}
           </a>

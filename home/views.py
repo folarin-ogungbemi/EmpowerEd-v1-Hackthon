@@ -1,4 +1,6 @@
 from django.views import generic
+from datetime import date, timedelta
+from django.contrib.auth import get_user_model
 from .models import Mentor, Resource, Parent, Student
 from .forms import MentorProfileForm, StudentProfileForm, ParentProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,30 +30,63 @@ class AboutView(generic.TemplateView):
     template_name = "about.html"
 
 
+def calculate_age(date_of_birth):
+    today = date.today()
+    age = (today.year - date_of_birth.year - ((today.month, today.day)
+           < (date_of_birth.month, date_of_birth.day)))
+    return age
+
+
 class UserProfileDetailView(LoginRequiredMixin, generic.DetailView):
     """
     A view for displaying User Profile in details.
     """
     template_name = "profile.html"
     context_object_name = "profile"
-
+    
     def get_queryset(self):
-        if self.request.user.role == "Student":
+        User = get_user_model()
+        user_pk = self.kwargs['pk']
+        user = get_object_or_404(User, pk=user_pk)
+
+        if user.role == "Student":
             return Student.objects.all()
-        elif self.request.user.role == "Parent":
+        elif user.role == "Parent":
             return Parent.objects.all()
-        elif self.request.user.role == "Mentor":
+        elif user.role == "Mentor":
             return Mentor.objects.all()
         else:
             return None
 
     def get_object(self):
-        queryset = self.get_queryset()
-        if queryset is not None:
-            obj = get_object_or_404(queryset, user_id=self.request.user)
-            return obj
+        User = get_user_model()
+        user_pk = self.kwargs['pk']
+        user = get_object_or_404(User, pk=user_pk)
+
+        if user.role == "Student":
+            obj = get_object_or_404(Student, user_id=user)
+        elif user.role == "Parent":
+            obj = get_object_or_404(Parent, user_id=user)
+        elif user.role == "Mentor":
+            obj = get_object_or_404(Mentor, user_id=user)
         else:
-            return None
+            obj = None
+        return obj
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        User = get_user_model()
+        user_pk = self.kwargs['pk']
+        user = get_object_or_404(User, pk=user_pk)
+        if user.role == "Student":
+            context['age'] = calculate_age(user.student.date_of_birth)
+            context['student_mentor'] = user.student.relationship_set.all()
+            context['student_parent'] = user.student.parent
+        elif user.role == "Parent":
+            context['parent_student'] = user.parent.student_set.all()
+        elif user.role == "Mentor":
+            context['mentor_student'] = user.mentor.relationship_set.all()
+        return context
 
 
 class UserProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
