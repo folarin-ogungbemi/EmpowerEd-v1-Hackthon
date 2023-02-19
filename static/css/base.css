@@ -116,7 +116,7 @@
 
 /* pages */
 .page{
-    margin-top: 20vh;
+    margin-top: 15vh;
     height: 80vh;
 }
 
@@ -126,4 +126,27 @@
     height: 80vh;
     margin-bottom: -30px;
     width: 50vw;
+.mentor-card{
+    position: relative;
+    width: 240px;
+}
+
+.mentor-image{
+    background-color: var(--col-light);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    width: 230px;
+    border-radius: 2px;
+}
+
+.mentor-info{
+    width: 230px;
+    margin: auto;
+}
+
+.mentor-image:hover{
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.mentor-card img{
+    border-radius: 5px;
 }
