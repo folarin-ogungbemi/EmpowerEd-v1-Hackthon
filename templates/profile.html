@@ -16,9 +16,15 @@
                     <div class="col-6">
                         <div class="user-profile mb-5">
                             <img src="{{ user.mentor.userpic }}" alt="{{ user }} profile picture">
-                            <div class="container profile d-flex justify-content-between">
+                            <div class="container profile d-flex">
                                 <p class="fw-semibold mt-3">{{ user }}</p>
-                                <a class="global-action-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                                <!-- update icon -->
+                                {% if user == request.user %}
+                                <a href="{% url 'home:update_profile' user.pk %}" class="link-primary mx-2"
+                                    title="Edit Your Profile">
+                                    <i class='bx bx-pencil'></i>
+                                </a>{% endif %}
+                                <!-- <a class="global-action-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a> -->
                             </div>
                         </div>
                         <p><strong>Area of Expertise:</strong> {{ user.mentor.area_of_expertise }}</p>
