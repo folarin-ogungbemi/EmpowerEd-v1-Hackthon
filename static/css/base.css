@@ -37,7 +37,16 @@
 }
 
 /* button */
-.action-btn{
+
+.global-active-btn{
+    background-color:var(--col-sec);
+    color: var(--col-light);
+    font-size: large;
+    width: fit-content;
+    padding: 5px 15px;
+}
+
+.hero-action-btn{
     background-color:var(--col-sec);
     color: var(--col-light);
     font-weight: 500;
@@ -46,7 +55,8 @@
     padding: 10px 30px;
 }
 
-.action-btn:hover{
+.global-active-btn:hover,
+.hero-action-btn:hover{
     background-color:var(--col-pry-light) !important;
     color: var(--col-light) !important;
 }
@@ -120,6 +130,7 @@
     height: 80vh;
 }
 
+/*-------- mentor card ---------*/
 .mentor-card{
     position: relative;
     width: 240px;
@@ -143,4 +154,26 @@
 
 .mentor-card img{
     border-radius: 5px;
+}
+
+/*  *****************
+    USER-PROFILE STYLE
+    *************** */
+.user-profile{
+    width: 100%;
+}
+
+.user-profile .profile > p{
+    font-size: x-large;
+    margin-block: auto;
+}
+.user-profile .profile > a{
+    margin-block: auto;
+}
+
+.user-profile img{
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    max-width: 10rem;
+    max-height: 10rem;
 }

@@ -1,21 +1,68 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="mt-5">
 
-<h1>User Profile</h1>
-<p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
-
-{% if user.role == 'Mentor' %}
-<h2>Mentor Profile</h2>
-
-<p><strong>Area of Expertise:</strong> {{ user.mentor.area_of_expertise }}</p>
-<p><strong>Bio:</strong> {{ user.mentor.bio }}</p>
-<img src="{{ user.mentor.userpic }}" alt="profile picture">
-
-<a href="{% url 'home:update_profile' user.pk %}">Update</a>
-
-<!-- look at the model and render what you need -->
+<div class="container page">
+    <div class="row">
+        <div class="col-12 header d-flex justify-content-center">
+          <h2 class="text-uppercase">User Profile</h2>
+        </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    {% if user.role == 'Mentor' %}
+                    <div class="col-6">
+                        <div class="user-profile mb-5">
+                            <img src="{{ user.mentor.userpic }}" alt="{{ user }} profile picture">
+                            <div class="container profile d-flex justify-content-between">
+                                <p class="fw-semibold">{{ user }}</p>
+                                <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                            </div>
+                        </div>
+                        <p><strong>Area of Expertise:</strong> {{ user.mentor.area_of_expertise }}</p>
+                        <p><strong>Bio:</strong> {{ user.mentor.bio }}</p>
+                    </div>
+                    <div class="col-6">
+                        <!--other informations-->
+                        <p>This could be another information with an action button</p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% elif user.role == 'Student' %}
+                    <div class="col-6">
+                        <img src="{{ user.student.userpic }}" alt="{{ user }} profile picture">
+                        <div class="container profile d-flex justify-content-between">
+                            <p class="fw-semibold">{{ user }}</p>
+                            <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!--other informations-->
+                        <p>This could be another information with an action button</p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% else %}
+                    <div class="col-6">
+                        <img src="{{ user.parent.userpic }}" alt=" {{ user }}profile picture">
+                        <div class="container profile d-flex justify-content-between">
+                            <p class="fw-semibold">{{ user }}</p>
+                            <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!--other informations-->
+                        <p>This could be another information with an action button</p>
+                    </div>
+                </div>
+        
+            {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
-{% endif %}
+
 {% endblock %}
