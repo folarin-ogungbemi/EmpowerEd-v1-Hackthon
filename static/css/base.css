@@ -164,24 +164,19 @@
     width: 50vw;
  }
 
+#js-framework-home a {
+     color: #242323;
+     text-decoration: none;
+ }
+
+#js-framework-home a:hover {
+     text-decoration: underline;
+ }
+
  .sender {
      font-style: italic;
      font-size: 13px;
      color: #8391a4 !important;
- }
-
- .react-link {
-     font-size: 17px;
-     color: #000;
- }
-
- .react-link:hover {
-     text-decoration: underline;
-     color: #8288ee;
- }
-
- #js-framework-home img {
-    opacity: 0.2;
  }
 
  /* Notifications */
@@ -220,14 +215,8 @@
     border-radius: 5px;
 }
 
-
 main {
     min-height: 100vh;
-}
-
-/* Notifications */
-#count {
-    font-size: 10px;
 }
 
 /*  *****************

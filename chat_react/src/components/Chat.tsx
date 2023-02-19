@@ -186,7 +186,7 @@ export default function Chat() {
           height: '75vh',
           display: 'flex',
           justifyContent: 'space-between',
-          background: 'url(https://cdn.vectorstock.com/i/preview-1x/23/93/science-blackboard-doodle-seamless-pattern-vector-23942393.jpg)',
+          background: '',
           backgroundRepeat: 'repeat',
         }}
       >
