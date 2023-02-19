@@ -150,6 +150,11 @@
     height: 70vh;
     margin-bottom: 1rem;
 }
+.profile {
+    margin-top: 5vh;
+    height: 70vh;
+    margin-bottom: 1rem;
+}
 
 .mentor-card{
     position: relative;

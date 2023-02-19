@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<div class="profile">
 <div class="mt-5">
 
 <h1>User Profile</h1>
@@ -16,6 +17,7 @@
 <a href="{% url 'home:update_profile' user.pk %}">Update</a>
 
 <!-- look at the model and render what you need -->
+</div>
 </div>
 {% endif %}
 {% endblock %}
