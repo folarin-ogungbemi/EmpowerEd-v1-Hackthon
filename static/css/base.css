@@ -64,7 +64,7 @@
 }
 
 /* button */
-.global-active-btn{
+.global-action-btn{
     background-color:var(--col-sec);
     color: var(--col-light);
     font-size: large;
@@ -81,7 +81,7 @@
     padding: 10px 30px;
 }
 
-.global-active-btn:hover,
+.global-action-btn:hover,
 .hero-action-btn:hover{
     background-color:var(--col-pry-light) !important;
     color: var(--col-light) !important;
@@ -185,6 +185,19 @@
 .mentor-card img{
     border-radius: 5px;
 }
+
+/*  *****************
+    RESOURCE STYLE
+    *************** */
+.resource-card{
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.resource-card img{
+    border-radius: 5px;
+}
+
 
 /*  *****************
     USER-PROFILE STYLE

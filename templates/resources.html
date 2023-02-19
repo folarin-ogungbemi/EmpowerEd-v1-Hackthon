@@ -12,7 +12,7 @@
     {% if 'resource_list' %}
     <div class="col-8 mx-auto">
         {% for resource in resource_list %}
-            <div class="container card mb-5 p-3">
+            <div class="container resource-card mb-5 p-3">
                 <div class="row">
                     <div class="col-6">
                         <img src="{{ resource.img }}" class="card-img-top" alt="{{ resource.name }}">
@@ -20,7 +20,7 @@
                     <div class="col-6 d-flex flex-column">
                         <h5 class="card-title text-dark">{{ resource.name }}</h5>
                         <p class="card-text text-dark">{{ resource.about }}</p>
-                        <a href="{{ resource.url }}" class="btn btn-success ms-auto align-self-end">Start now</a>
+                        <a href="{{ resource.url }}" class="btn global-action-btn rounded-pill ms-auto align-self-end">Start now</a>
                     </div>
                 </div>
             </div>
