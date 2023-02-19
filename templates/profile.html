@@ -3,8 +3,8 @@
 {% block content %}
 
     <div class="row">
-        <div class="col-12 header d-flex justify-content-center mb-5">
-          <h2 class="text-uppercase">User Profile</h2>
+        <div class="col-12 mb-5">
+          <h1 class="text-center">User Profile</h1>
         </div>
     </div>
     
@@ -17,7 +17,7 @@
                         <div class="user-profile mb-5">
                             <img src="{{ user.mentor.userpic }}" alt="{{ user }} profile picture">
                             <div class="container profile d-flex justify-content-between">
-                                <p class="fw-semibold">{{ user }}</p>
+                                <p class="fw-semibold mt-3">{{ user }}</p>
                                 <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
                             </div>
                         </div>
