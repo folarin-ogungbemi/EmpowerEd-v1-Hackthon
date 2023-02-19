@@ -16,7 +16,7 @@
                 <div class="col-6">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt="{{ profile }} profile picture">
-                        <div class="container profile d-flex">
+                        <div class="container profile d-flex justify-content-between">
                             <p class="fw-semibold mt-3">{{ profile.user_id }}</p>
                             <!-- update icon -->
                             {% if profile.user_id == request.user %}
@@ -24,8 +24,8 @@
                                 title="Edit Your Profile">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>{% endif %}
-                            <!-- <a class="global-action-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a> -->
                         </div>
+                        <a class="global-action-btn btn rounded-pill mt-3" href="#">contact mentor</a>
                     </div>
                     <p><strong>Area of Expertise:</strong> {{ profile.area_of_expertise }}</p>
                     <p><strong>Bio:</strong> {{ profile.bio }}</p>
@@ -82,6 +82,7 @@
                                <i class="fa-solid fa-pen-to-square"></i>
                            </a>{% endif %}
                         </div>
+                        <a class="global-action-btn btn rounded-pill mt-3" href="#">contact parent</a>
                     </div>
                     <p>Children:</p>
                     {% for relationship in parent_student %}
