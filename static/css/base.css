@@ -21,9 +21,13 @@
 
 5. USER-PROFILE STYLE
 
-6. FOOTER-LINKS STYLE
+6. CHAT STYLE
 
-7. SCROLL-BAR STYLE
+7. NOTIFICATION STYLE
+
+8. FOOTER-LINKS STYLE
+
+9. SCROLL-BAR STYLE
 
 */
 
@@ -156,35 +160,6 @@
     padding: 1rem;
 }
 
-/* chat */
- #js-framework-home {
-    overflow-y: scroll;
-    height: 80vh;
-    margin-bottom: -30px;
-    width: 50vw;
- }
-
-#js-framework-home a {
-     color: #242323;
-     text-decoration: none;
- }
-
-#js-framework-home a:hover {
-     text-decoration: underline;
- }
-
- .sender {
-     font-style: italic;
-     font-size: 13px;
-     color: #8391a4 !important;
- }
-
- /* Notifications */
- #count {
-     font-size: 10px;
- }
-
- /* mentors */
 /*  ***********
     MENTOR STYLE
     *********** */
@@ -213,10 +188,6 @@
 
 .mentor-card img{
     border-radius: 5px;
-}
-
-main {
-    min-height: 100vh;
 }
 
 /*  *****************
@@ -257,18 +228,52 @@ main {
 }
 
 /*  *****************
-    FOOTER-LINKS STYLE
+    CHAT STYLE
     *************** */
-.footer-links{
-    min-width: 100%;
-    background: var(--col-light);
-    box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
+/* chat */
+#js-framework-home {
+    overflow-y: scroll;
+    height: 80vh;
+    margin-bottom: -30px;
+    width: 50vw;
+ }
+
+#js-framework-home a {
+     color: #242323;
+     text-decoration: none;
+ }
+
+#js-framework-home a:hover {
+     text-decoration: underline;
+ }
+
+ .sender {
+     font-style: italic;
+     font-size: 13px;
+     color: #8391a4 !important;
+ }
+
+/*  *****************
+    NOTIFICATION STYLE
+    *************** */
+/* Notifications */
+#count {
+    font-size: 10px;
 }
 
-.footer-links .nav-link:hover{
-    color: var(--col-sec);
-}
+/*  *****************
+    FOOTER-LINKS STYLE
+    *************** */
+    .footer-links{
+        min-width: 100%;
+        background: var(--col-light);
+        box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+    }
+    
+    .footer-links .nav-link:hover{
+        color: var(--col-sec);
+    }
 
 /*  *****************
     SCROLL-BAR STYLE
