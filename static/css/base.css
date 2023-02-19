@@ -157,13 +157,34 @@
 }
 
 /* chat */
-#js-framework-home {
+ #js-framework-home {
     overflow-y: scroll;
     height: 80vh;
     margin-bottom: -30px;
     width: 50vw;
-}
+ }
 
+#js-framework-home a {
+     color: #242323;
+     text-decoration: none;
+ }
+
+#js-framework-home a:hover {
+     text-decoration: underline;
+ }
+
+ .sender {
+     font-style: italic;
+     font-size: 13px;
+     color: #8391a4 !important;
+ }
+
+ /* Notifications */
+ #count {
+     font-size: 10px;
+ }
+
+ /* mentors */
 /*  ***********
     MENTOR STYLE
     *********** */
@@ -194,14 +215,8 @@
     border-radius: 5px;
 }
 
-
 main {
     min-height: 100vh;
-}
-
-/* Notifications */
-#count {
-    font-size: 10px;
 }
 
 /*  *****************

@@ -67,11 +67,11 @@ export default function ActiveConversations() {
         <Card.Header
           style={{
             fontSize: '18px',
-            background: '#499ef5',
+            background: '#2f2d2d',
             color: '#f8fbfe',
           }}
           className="px-4">
-          Conversations
+          Your Chats
           
         </Card.Header>
         <ListGroup variant="flush">
@@ -108,6 +108,8 @@ export default function ActiveConversations() {
                         style={{
                           flexDirection: 'row',
                           justifyContent: 'space-between',
+                          color: 'black',
+                          paddingTop: '10px',
                         }}>
                         <Card.Title>
                           {c.other_user.first_name} {c.other_user.last_name}

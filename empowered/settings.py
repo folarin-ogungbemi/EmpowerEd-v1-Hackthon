@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost', '8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io']
+    ALLOWED_HOSTS = ['localhost', '8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io', 'team4-empowered.herokuapp.com/']
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
@@ -107,21 +107,11 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [(os.environ.get("REDISCLOUD_URL", "REDIS_PORT"))]
-#         },
-#     },
-# }
-
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.environ.get("REDIS_HOST"), os.environ.get("REDIS_PORT"))],
+            "hosts": [(os.environ.get("REDISCLOUD_URL", "REDIS_PORT"))]
         },
     },
 }
