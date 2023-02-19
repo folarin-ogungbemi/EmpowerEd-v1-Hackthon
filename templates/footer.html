@@ -1,35 +1,56 @@
 {% load static %}
-<footer>
-<div class = "container p-3 w-100 sticky-bottom text-center text-bg-light m-0" style="min-width: 100%;">
-    <div class="row align-items-start">
+<footer class="container footer-links text-center">
+    <div class="row">
         <div class="col-4">
-            <div class="d-flex flex-column justify-content-center text-wrap">
-                <H3>Social media links:</H3>
-                <div class="p-1"><i class="fa-brands fa-facebook"><a class="nav-link" href="https://www.facebook.com/" target="_blank"></i>Join our community on Facebook!</a></div>
-                <div class="p-1"><i class="fa-brands fa-twitter"><a class="nav-link" href="https://www.Twitter.com/" target="_blank"></i>Keep up to date with the latest news!</a></div>
-                <div class="p-1"><i class="fa-brands fa-instagram"><a class="nav-link" href="https://www.Instagram.com/" target="_blank"></i>Follow us on Instagram!</a></div>
-                <div class="p-1"><i class="fa-brands fa-youtube"><a class="nav-link" href="https://www.Youtube.com/" target="_blank"></i>Watch our online classes and webinars online!</a></div>
-            </div>
+            <h5>Social Links</h5>
+            <ul class="social-links list-unstyled gap-3">
+                <li class="nav-list">
+                    <a href="https://www.facebook.com/" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Facebook page(open in a new tab)"><small>Facebook</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://www.Twitter.com/" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Twitter page(open in a new tab)"><small>Twitter</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://www.Youtube.com/" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Youtube page(open in a new tab)"><small>Youtube</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://www.Instagram.com/" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Instagram page(open in a new tab)"><small>Instagram</small></a>
+                </li>
+            </ul>
         </div>
         <div class="col-4">
-            <div class="d-flex flex-column justify-content-center text-wrap">
-                <h3>Helpful links:</h3>
-                <div class="p-1"><a class="nav-link" href="https://www.curajoy.org" type="_blank">CURAJOY</class></a></div>
-                <div class="p-1"><a class="nav-link" href="https://www.nhs.uk/conditions/autism" type="_blank">AUTISM</a></div>
-                <div class="p-1"><a class="nav-link" href="https://walk.cafod.org.uk" type="_blank">CAFOD</a></div>
-                <div class="p-1"><a class="nav-link" href="https://www.scope.org.uk" type="_blank">SCOPE</a></div>
-                <div class="p-1"><a class="nav-link" href="https://uk.ixl.com" type="_blank">UK.IXL</a></div>
-            </div>
+            <h5>Helpful Links</h5>
+            <ul class="helpful-links list-unstyled gap-3">
+                <li class="nav-list">
+                    <a href="https://www.curajoy.org" class="nav-link" target="_blank" rel="noopener" aria-label="visit Curajoy page(open in a new tab)"><small>Curajoy</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://www.nhs.uk/conditions/autism" class="nav-link" target="_blank" rel="noopener" aria-label="visit Autism page(open in a new tab)"><small>Autism</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://walk.cafod.org.uk" class="nav-link" target="_blank" rel="noopener" aria-label="visit Cafod page(open in a new tab)"><small>Cafod</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="https://www.scope.org.uk" class="nav-link" target="_blank" rel="noopener" aria-label="visit Scope page(open in a new tab)"><small>Scope</small></a>
+                </li>
+            </ul>
         </div>
         <div class="col-4">
-            <div class="d-flex flex-column justify-content-center text-wrap">
-                <h3>Internal links:</h3>
-                <a class="nav-link" href="{% url 'home:home' %}" title="">Home</a>
-                <a class="nav-link" href="{% url 'home:resources' %}" title="">Resources</a>
-                <a class="nav-link" href="{% url 'home:mentors' %}" title="">Mentors</a>
-                <a class="nav-link" href="{% url 'home:about' %}" title="">About</a>
-            </div>
+            <h5>Internal Links</h5>
+            <ul class="internal-links list-unstyled gap-3">
+                <li class="nav-list">
+                    <a href="{% url 'home:home' %}" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Home page(open in a new tab)"><small>Home</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="{% url 'home:resources' %}" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Resources page(open in a new tab)"><small>Resources</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="{% url 'home:mentors' %}" class="nav-link" target="_blank" rel="noopener" aria-label="visit our Mentors page(open in a new tab)"><small>Mentors</small></a>
+                </li>
+                <li class="nav-list">
+                    <a href="{% url 'home:about' %}" class="nav-link" target="_blank" rel="noopener" aria-label="visit our About page(open in a new tab)"><small>About</small></a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
 </footer>

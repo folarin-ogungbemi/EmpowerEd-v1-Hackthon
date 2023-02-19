@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="mentor">
-<div class="container">
+
     <div class="row">
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center mb-5">
           <h2 class="text-uppercase">Mentors</h2>
         </div>
     </div>
 
     {% if 'mentor_list' %}
     <div class="col-12">
-        <div class="container my-2">
+        <div class="container">
             <div class="row">
                 {% for mentor in mentor_list %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -59,5 +58,4 @@
     {% else %}
         <p>Ooops, nothing here.</p>
     {% endif %}
-</div>
 {% endblock %}

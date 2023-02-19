@@ -37,7 +37,16 @@
 }
 
 /* button */
-.action-btn{
+
+.global-active-btn{
+    background-color:var(--col-sec);
+    color: var(--col-light);
+    font-size: large;
+    width: fit-content;
+    padding: 5px 15px;
+}
+
+.hero-action-btn{
     background-color:var(--col-sec);
     color: var(--col-light);
     font-weight: 500;
@@ -46,7 +55,8 @@
     padding: 10px 30px;
 }
 
-.action-btn:hover{
+.global-active-btn:hover,
+.hero-action-btn:hover{
     background-color:var(--col-pry-light) !important;
     color: var(--col-light) !important;
 }
@@ -115,47 +125,12 @@
 }
 
 /* pages */
-.home{
-    margin-top: 30vh;
-    height: 70vh;
-    margin-bottom: 0rem;
-}
-.resouces{
-    margin-top: 5vh;
-    height: 75vh;
-    margin-bottom: 30rem;
-}
-.mentor{
-    margin-top: 5vh;
-    height: 70vh;
-    margin-bottom: 0rem;
-}
-.about{
-    margin-top: 5vh;
-    height: 70vh;
-    margin-bottom: 0rem;
-}
-.signup{
-    margin-top: 5vh;
-    height: 71vh;
-    margin-bottom: 0rem;
-}
-.signin{
-    margin-top: 5vh;
-    height: 70vh;
-    margin-bottom: 1rem;
-}
-.signout{
-    margin-top: 5vh;
-    height: 70vh;
-    margin-bottom: 1rem;
-}
-.profile {
-    margin-top: 5vh;
-    height: 70vh;
-    margin-bottom: 1rem;
+.page{
+    margin-top: 15vh;
+    min-height: 85vh;
 }
 
+/*-------- mentor card ---------*/
 .mentor-card{
     position: relative;
     width: 240px;
@@ -179,4 +154,36 @@
 
 .mentor-card img{
     border-radius: 5px;
+}
+
+/*  *****************
+    USER-PROFILE STYLE
+    *************** */
+.user-profile{
+    width: 100%;
+}
+
+.user-profile .profile > p{
+    font-size: x-large;
+    margin-block: auto;
+}
+.user-profile .profile > a{
+    margin-block: auto;
+}
+
+.user-profile img{
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    max-width: 10rem;
+    max-height: 10rem;
+}
+
+/*  *****************
+    FOOTER-LINKS STYLE
+    *************** */
+.footer-links{
+    min-width: 100%;
+    background: var(--col-light);
+    box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
 }
