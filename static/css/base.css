@@ -282,6 +282,23 @@
         color: var(--col-sec);
     }
 
+    /******************
+    PAGINATION STYLE
+    *************** **/
+    .page-link{
+        color: var(--col-sec);
+    }
+    
+    .active>.page-link{
+        background-color: var(--col-sec);
+        border-color: var(--col-sec);
+    }
+
+    .active>.page-link:hover{
+        background-color: var(--col-pry-light);
+        border-color: var(--col-pry-light);
+    }
+
 /*  *****************
     SCROLL-BAR STYLE
     *************** */
