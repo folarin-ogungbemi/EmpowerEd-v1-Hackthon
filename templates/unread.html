@@ -1,0 +1,36 @@
+<span id="count" class="position-absolute bottom-50 start-50 badge rounded-pill bg-danger">
+    <span class="visually-hidden">unread messages</span>
+</span>
+
+<script>
+    var socket = new WebSocket("wss://8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/notifications/");
+    socket.onopen = function () {
+        console.log("Connected to Notifications!");
+    };
+    socket.onclose = function () {
+        console.log("Disconnected from Notifications!");
+    };
+
+    // Listen for messages from the server
+    socket.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        switch (data.type) {
+            default:
+                console.error("Unknown message type!");
+                break;
+            case "unread_count":
+                let unread = data.unread_count;
+                if (unread > 0) {
+                    $('#count').html(unread)
+                } else {
+                    $('#count').hide()
+                };
+            case "new_message_notification":
+                if (data.unread_count == null) {
+                    let unread = parseInt($('#count').html());
+                    unread += 1;
+                    $('#count').html(unread);
+                };
+        }
+    };
+</script>

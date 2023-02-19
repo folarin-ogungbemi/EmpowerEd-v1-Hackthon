@@ -43,8 +43,10 @@
                                             <i class='bx bxs-user-circle'></i>&nbsp;{{ user.first_name }}
                                         </a>
                                         <!-- messenger icon -->
-                                        <a href="#" class="nav-link" aria-label="Messages">
-                                            <i class='bx bx-envelope fs-6 text position-relative' id="messages"></i>
+                                        <a href="{% url 'chat_backend:conv_list' %}" class="px-0 me-2"
+                                            aria-label="Messages">
+                                            <i class='bx bx-envelope fs-6 text position-relative'
+                                                id="messages">{% include "unread.html" %}</i>
                                         </a>
                                     {% endif %}
                                     {% if user.is_authenticated %}

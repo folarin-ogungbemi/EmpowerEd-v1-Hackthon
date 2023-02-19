@@ -156,3 +156,8 @@
 main {
     min-height: 100vh;
 }
+
+/* Notifications */
+#count {
+    font-size: 10px;
+}

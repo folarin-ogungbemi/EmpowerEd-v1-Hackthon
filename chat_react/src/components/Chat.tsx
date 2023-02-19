@@ -25,7 +25,7 @@ export default function Chat() {
     };
   
     const { readyState, sendJsonMessage } = useWebSocket(`wss://8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/messages/chat/${conversationName}`, {
-      onOpen: () => {
+       onOpen: () => {
         console.log("Connected!")
       },
       onClose: () => {
@@ -34,20 +34,20 @@ export default function Chat() {
       onMessage: (e) => {
         const data = JSON.parse(e.data)
         switch (data.type) {
-          case 'welcome_message':
-            setWelcomeMessage(data.message)
-            break;
           case 'chat_message_echo':
             setMessageHistory((prev: any) => [data.message, ...prev]);
+            sendJsonMessage({
+              type: "read_messages",
+            });
+            break;
+          case "last_50_messages":
+            setMessageHistory(data.messages);
+            setHasMoreMessages(data.has_more);
+            setToUser(data.to_user)
             break;
           default:
             console.error('Unknown message type!');
             break;
-            case "last_50_messages":
-              setMessageHistory(data.messages);
-              setHasMoreMessages(data.has_more);
-              setToUser(data.to_user)
-              break;
         }
       }
     });
@@ -72,7 +72,7 @@ export default function Chat() {
   
     async function fetchMessages() {
       const apiRes = await fetch(
-        `https://8000-okserm-helpu-4vq7cec76g9.ws-eu74.gitpod.io/api/messages/?conversation=${conversationName}&page=${page}`,
+        `/api/messages/?conversation=${conversationName}&page=${page}`,
         {
           method: "GET",
           headers: {
@@ -93,8 +93,6 @@ export default function Chat() {
         setMessageHistory((prev: MessageModel[]) => prev.concat(data.results));
       }
     }
-
-    const ID = JSON.parse(document.getElementById('id').textContent);
   
     function handleChangeMessage(e: any) {
       setMessage(e.target.value)
@@ -163,7 +161,7 @@ export default function Chat() {
             </InfiniteScroll>
         </div>
       </Card>
-      
+
       <div className="d-flex">
         <Form.Control 
           style={{ 
