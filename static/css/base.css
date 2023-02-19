@@ -223,8 +223,15 @@
 .user-profile img{
     border-radius: 50%;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
+.pen{
+    color: var(--col-sec) !important;
+}
+.pen:hover{
+    color: var(--col-pry-light) !important;
 }
 
 /*  *****************

@@ -20,9 +20,9 @@
                             <p class="fw-semibold mt-3">{{ profile.user_id }}</p>
                             <!-- update icon -->
                             {% if profile.user_id == request.user %}
-                            <a href="{% url 'home:update_profile' profile.user_id.pk %}" class="link-primary mx-2"
+                            <a href="{% url 'home:update_profile' profile.user_id.pk %}" class="link-primary mx-2 pen"
                                 title="Edit Your Profile">
-                                <i class='bx bx-pencil'></i>
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </a>{% endif %}
                             <!-- <a class="global-action-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a> -->
                         </div>
@@ -47,9 +47,9 @@
                         <div class="container profile d-flex justify-content-between">
                             <p class="fw-semibold">{{ profile }}</p>
                            {% if profile.user_id == request.user %}
-                           <a href="{% url 'home:update_profile' profile.user_id.pk %}" class="link-primary mx-2"
+                           <a href="{% url 'home:update_profile' profile.user_id.pk %}" class="link-primary mx-2 pen"
                                title="Edit Your Profile">
-                               <i class='bx bx-pencil'></i>
+                               <i class="fa-solid fa-pen-to-square"></i>
                            </a>{% endif %}
                         </div>
                     </div>
@@ -64,6 +64,10 @@
                 <div class="col-6">
                     <!--other informations-->
                     <p>Upcoming Sessions: </p>
+                    {% for lesson in lessons %}
+                    <p><a href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor }}</a>
+                        {{ lesson.start_time }}-{{ lesson.end_time }}</p>
+                    {% endfor %}
                 </div>
 
                 {% else %}
@@ -73,9 +77,9 @@
                         <div class="container profile d-flex justify-content-between">
                             <p class="fw-semibold">{{ profile }}</p>
                            {% if profile.user_id == request.user %}
-                           <a href="{% url 'home:profile' profile.user_id.pk %}" class="link-primary mx-2"
+                           <a href="{% url 'home:profile' profile.user_id.pk %}" class="link-primary mx-2 pen"
                                title="Edit Your Profile">
-                               <i class='bx bx-pencil'></i>
+                               <i class="fa-solid fa-pen-to-square"></i>
                            </a>{% endif %}
                         </div>
                     </div>
@@ -89,7 +93,11 @@
                 </div>
                 <div class="col-6">
                     <!--other informations-->
-                    <p>Upcoming Sessions:</p>
+                    <p>Upcoming Sessions: </p>
+                    {% for lesson in lessons %}
+                    <p><a href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor }}</a>
+                        {{ lesson.start_time }}-{{ lesson.end_time }}</p>
+                    {% endfor %}
                 </div>
 
                 {% endif %}
