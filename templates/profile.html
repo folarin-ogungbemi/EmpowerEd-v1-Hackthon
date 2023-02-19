@@ -32,10 +32,12 @@
                 <div class="row">
                     {% elif user.role == 'Student' %}
                     <div class="col-6">
-                        <img src="{{ user.student.userpic }}" alt="{{ user }} profile picture">
-                        <div class="container profile d-flex justify-content-between">
-                            <p class="fw-semibold">{{ user }}</p>
-                            <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                        <div class="user-profile mb-5">
+                            <img src="{{ user.student.userpic }}" alt="{{ user }} profile picture">
+                            <div class="container profile d-flex justify-content-between">
+                                <p class="fw-semibold">{{ user }}</p>
+                                <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -46,10 +48,12 @@
                 <div class="row">
                     {% else %}
                     <div class="col-6">
-                        <img src="{{ user.parent.userpic }}" alt=" {{ user }}profile picture">
-                        <div class="container profile d-flex justify-content-between">
-                            <p class="fw-semibold">{{ user }}</p>
-                            <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                        <div class="user-profile mb-5">
+                            <img src="{{ user.parent.userpic }}" alt=" {{ user }}profile picture">
+                            <div class="container profile d-flex justify-content-between">
+                                <p class="fw-semibold">{{ user }}</p>
+                                <a class="global-active-btn btn rounded-pill mt-2" href="{% url 'home:update_profile' user.pk %}">Update</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
