@@ -107,16 +107,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(os.environ.get("REDISCLOUD_URL", "REDIS_PORT"))]
-        },
-    },
-}
-
-
 WSGI_APPLICATION = 'empowered.wsgi.application'
 ASGI_APPLICATION = "empowered.asgi.application"
 
@@ -194,6 +184,32 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+# Websoket stuff
+
+REDIS_URL = os.environ.get('REDISCLOUD_URL')
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(os.environ.get("REDISCLOUD_URL", "REDIS_PORT"))]
+        },
+    },
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ.get("REDISCLOUD_URL"),
+        "OPTIONS": {
+            "PASSWORD": os.environ.get("REDIS_PASSWORD"),
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+    }
+}
 
 
 # if 'USE_AWS' in os.environ:
