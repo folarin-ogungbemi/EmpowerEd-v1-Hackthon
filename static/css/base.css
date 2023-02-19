@@ -121,13 +121,39 @@
 }
 
 /* chat */
-#js-framework-home {
-    overflow-y: scroll;
-    height: 80vh;
-    margin-bottom: -30px;
-    width: 50vw;
-}
+ #js-framework-home {
+     min-height: 55vh;
+     height: fit-content;
+     margin-bottom: -50px;
+     min-width: 450px;
+ }
 
+ .sender {
+     font-style: italic;
+     font-size: 13px;
+     color: #8391a4 !important;
+ }
+
+ .react-link {
+     font-size: 17px;
+     color: var(--bluesmoke);
+ }
+
+ .react-link:hover {
+     text-decoration: underline;
+     color: var(--white);
+ }
+
+ #js-framework-home img {
+    opacity: 0.2;
+ }
+
+ /* Notifications */
+ #count {
+     font-size: 10px;
+ }
+
+ /* mentors */
 .mentor-card{
     position: relative;
     width: 240px;
@@ -157,7 +183,3 @@ main {
     min-height: 100vh;
 }
 
-/* Notifications */
-#count {
-    font-size: 10px;
-}

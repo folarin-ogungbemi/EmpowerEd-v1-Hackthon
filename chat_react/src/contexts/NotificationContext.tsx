@@ -22,7 +22,7 @@ export const NotificationContextProvider: React.FC<{ children: ReactNode }> = ({
   const [isError, setIsError] = useState(false);
 
   const { readyState } = useWebSocket(
-    `wss://8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io/notifications/`,
+    `wss://team4-empowered.herokuapp.com/notifications/`,
     {
       onOpen: () => {
         console.log('Connected to Notifications!');
@@ -47,13 +47,13 @@ export const NotificationContextProvider: React.FC<{ children: ReactNode }> = ({
           case 'new_message_notification':
             setUnreadMessageCount((count) => (count += 1));
             let from_user = eachUser.find(
-              (x: any) => x[0] == data.message.from_user.id
+              (x: any) => x[0] == data.message.from_user.pk
             );
             if (from_user == undefined) {
-              eachUser.push([data.message.from_user.id, 1]);
+              eachUser.push([data.message.from_user.pk, 1]);
             } else {
               eachUser.find(
-                (x: any) => x[0] == data.message.from_user.id
+                (x: any) => x[0] == data.message.from_user.pk
               )[1] += 1;
             }
             break;
