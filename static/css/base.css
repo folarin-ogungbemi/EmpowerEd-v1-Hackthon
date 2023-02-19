@@ -22,6 +22,9 @@
 5. USER-PROFILE STYLE
 
 6. FOOTER-LINKS STYLE
+
+7. SCROLL-BAR STYLE
+
 */
 
 
@@ -207,4 +210,32 @@
     background: var(--col-light);
     box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.2);
     padding: 1rem;
+}
+
+/*  *****************
+    SCROLL-BAR STYLE
+    *************** */
+
+::-webkit-scrollbar{
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--col-light);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color:rgba(130, 136, 238, 0.7);
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color:var(--col-sec);
+}
+
+@supports (scrollbar-color: red, blue){
+    *{
+        scrollbar-color: rgba(130, 136, 238, 0.7) transparent;
+        scrollbar-width: thin;
+    }
 }
