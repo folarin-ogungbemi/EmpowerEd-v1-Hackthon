@@ -5,25 +5,26 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="signin">
-<canvas class="allauth background"></canvas>
-<div class="all-auth">
-    <div class="container reg">
-        <div class="row">
-            <div class="col-12 mt-3 reg-content">
-                <h4 class="text-center mb-3">{% trans "Sign In" %}</h4>
-                <form class="login" method="POST" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-danger" type="submit">{% trans "Sign In" %}</button>
-                    </div>
-                    <div class="my-3">
-                        <span>{% blocktrans %}Do not have an Account? <a class="text-danger" href="{{ signup_url }}">Create Account</a>{% endblocktrans %}</span>
-                    </div>
-                </form>
+    <canvas class="allauth background"></canvas>
+    <div class="all-auth">
+        <div class="container reg">
+            <div class="row">
+                <div class="col-12 mt-3 reg-content">
+                    <h4 class="text-center mb-3">{% trans "Sign In" %}</h4>
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-danger" type="submit">{% trans "Sign In" %}</button>
+                        </div>
+                        <div class="my-3">
+                            <span>{% blocktrans %}Do not have an Account? <a class="text-danger"
+                                    href="{{ signup_url }}">Create Account</a>{% endblocktrans %}</span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-{% endblock %}
+    {% endblock %}
