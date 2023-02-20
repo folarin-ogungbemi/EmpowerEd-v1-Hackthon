@@ -110,6 +110,17 @@ ___
 
 ___
 # Features
+
+## AllAuth
+
+AllAuth is a flexible solution for managing user authentication and registration. It uses session-based authentication instead of Django's token-based authentication to store the user's authentication information in the user's session. When a user logs in, AllAuth generates a new session for the user and saves their identifying information, such as their ID or username, in the session. The library then sends a session ID to the client as a session cookie, which is stored in the browser. Subsequent requests from the client include the session ID in the Cookie header of the HTTP request, allowing [django-allauth](https://django-allauth.readthedocs.io/en/latest/) to authenticate the user by looking up the associated session.
+
+One of the main reasons we chose to use [django-allauth](https://django-allauth.readthedocs.io/en/latest/) is because of its flexibility and support for various authentication methods. Another reason is because of its scalability. 
+
+### User Authentication 
+The project uses a custom user model with email as a user id, instead of using Django's built-in User model, which means that users to register and log in to the website need to use their email address instead of a traditional username, it also uses a custom sign up form. 
+
+
 ___
 
 # Technologies
