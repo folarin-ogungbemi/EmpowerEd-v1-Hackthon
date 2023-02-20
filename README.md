@@ -1,5 +1,7 @@
 # Education Platform for Underprivileged Children
 
+![](/media/homepage_mockup.jpg)
+
 [EmpowerEd](team4-empowered.herokuapp.com/) is an educational platform developed with the aim to provide education resources to underprivileged children. The application has a range of features to make learning interactive, accessible and engaging for students while also allowing students to connect with mentors, and providing the avenue for parents to communicate conveniently with teachers. In summary, the Website aim to achieve the goal of creating an education enabled environment for students.
 
 ## Table of contents
@@ -85,16 +87,26 @@ Using a hybrid architecture has a significant advantage of using Django's built-
 
 Using React for the frontend, specifically for a real-time Messenger, we can provide a smooth and responsive user experience due to React's performance benefits. React is also highly modular, enabling the easy scaling of different parts of the application independently as needed. This makes it simpler to add new features or make changes to the application without affecting other parts of the codebase, as well as simplifying the debugging and testing processes.
 ___
-# Design
+## Design
 
 ### Colour Scheme
+Empowered needed an inviting color that signifies the values of the company.
+A mixture of this color was made with
+
+* #a2df9d
+* #8288ee
+* #fff 
+* #000
 
 ### Typography
 
-### Images
+The contents of the website is required to be clear and legible for users. 
+'Inter' The bootstrap 5 default font family was the choice for typographic design as it answers the question of readability well. 
 
-#### Hover effect
+### graphics & Layout
 
+The Website was pre-designed on a graphical paper. A pictogram of what the various pages of the website could look like in order to accomodate informations helpful for the user.
+[wireframe](/media/IMG_0825.jpg "link to image")
 ___
 # Architecture
 
@@ -111,8 +123,46 @@ ___
 ___
 # Features
 
-## AllAuth
+* Sign In
+![](/media/login.jpg)
 
+* Sign Up
+![](/media/sign_up.jpg)
+
+* Homepage
+![](/media/homepage.jpg)
+
+* Navbar
+![](/media/navbar.jpg)
+
+* User Profile and notification
+![](/media/user_profile_and_notifications.jpg)
+
+* User Profile
+![](/media/user_profile.jpg)
+
+* Edit User Profile
+![](/media/edit_user_profile.jpg)
+
+* Parent Profile
+![](/media/parent_user_profile.jpg)
+
+* Mentors Page
+![](/media/mentors_page.jpg)
+
+* Resources Page
+![](/media/resources_page.jpg)
+
+* User Notifications
+![](/media/user_notifications.jpg)
+
+* Messaging
+![](/media/messaging.jpg)
+
+* Footer Links
+![](/media/footer_links.jpg)
+
+![](readme/assets/dj_messages.png)
 AllAuth is a flexible solution for managing user authentication and registration. It uses session-based authentication instead of Django's token-based authentication to store the user's authentication information in the user's session. When a user logs in, AllAuth generates a new session for the user and saves their identifying information, such as their ID or username, in the session. The library then sends a session ID to the client as a session cookie, which is stored in the browser. Subsequent requests from the client include the session ID in the Cookie header of the HTTP request, allowing [django-allauth](https://django-allauth.readthedocs.io/en/latest/) to authenticate the user by looking up the associated session.
 
 One of the main reasons we chose to use [django-allauth](https://django-allauth.readthedocs.io/en/latest/) is because of its flexibility and support for various authentication methods. Another reason is because of its scalability. 
@@ -382,15 +432,6 @@ ___
     5. Paste the same value as `REDIS_URL_STUNNEL`
 ___
 
-# Credits
 
-## Media
-
-
-## Design Template
-
-## Code
-
-## Acknowledgements
 
 ___
