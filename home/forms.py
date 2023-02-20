@@ -1,5 +1,7 @@
 from allauth.account.forms import SignupForm
-from django.forms import CharField, TextInput, Textarea, ChoiceField, Select, ModelForm
+from django.forms import (CharField, TextInput, Textarea,
+                          ChoiceField, Select, ModelForm,
+                          ModelChoiceField, DateInput)
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from .models import Mentor, Student, Parent
@@ -70,11 +72,58 @@ class MentorProfileForm(ModelForm):
                               css_class='btn btn-primary px-5'))
 
 
-# Please create Student and Parent the same way: jusy rename fields accordingly
-
 class StudentProfileForm(ModelForm):
-    pass
+    parent = ModelChoiceField(queryset=Parent.objects.all(), required=False)
+
+    class Meta:
+        model = Student
+        fields = ['date_of_birth', 'interests', 'userpic', 'parent']
+
+        widgets = {
+            'date_of_birth': DateInput(attrs={
+                'type': 'date',
+                'placeholder': 'Date of Birth'
+            }),
+            'interests': Textarea(attrs={
+                'style': 'height: 150px;',
+                'placeholder': 'Tell us about yourself'
+            }),
+            'userpic': TextInput(attrs={
+                'placeholder': 'URL of your profile picture'
+            })
+        }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Specifies layout to add image preview.
+        """
+        super(StudentProfileForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.add_input(Submit('save', 'Save',
+                              css_class='btn btn-primary px-5'))
 
 
 class ParentProfileForm(ModelForm):
-    pass
+    class Meta:
+        """
+        Inner class for metadata options for the form.
+        """
+        model = Parent
+        fields = ['phone_number', 'userpic']
+
+        widgets = {
+            'phone_number': TextInput(attrs={
+                'placeholder': 'Phone Number',
+            }),
+            'userpic': TextInput(attrs={
+            }),
+        }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Specifies layout to add image preview.
+        """
+        super(ParentProfileForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.add_input(Submit('save', 'Save',
+                              css_class='btn btn-primary px-5'))
