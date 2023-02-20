@@ -280,7 +280,7 @@
         background-repeat: no-repeat;
         min-height: 100vh;
         margin-top: -12vh;
-        z-index: -1;
+        margin-bottom: 0.5vh;
     }
 
     .about-content{
