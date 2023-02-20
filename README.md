@@ -98,7 +98,13 @@ ___
 ___
 # Architecture
 
+<img src="https://www.saaspegasus.com/static/images/web/modern-javascript/django-react-header.51a983c82dcb.png" width="300" />
 
+A hybrid architecture - a single-page React app (Messenger) integrated into a Django project. This approach allows for multiple types of pages in the same project.
+
+Here is a scheme of the structure:
+
+![](https://www.saaspegasus.com/static/images/web/modern-javascript/js-pipeline-with-django.56456c10739f.png)
 ___
 # Data Model
 
