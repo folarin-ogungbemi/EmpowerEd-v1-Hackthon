@@ -131,6 +131,37 @@ This feature is beneficial for users as it allows them to keep their profile inf
 
 Users can access the profile update page by clicking on their name in the top right corner of the website, and then clicking on the "Edit Profile" button. Once on the update page, they can edit the fields they wish to change and save the changes by clicking on the "Save" button.
 
+### Message Notifications
+
+The website has a real-time messaging feature that uses websockets to display a notification in the form of a badge on the messenger icon whenever a new message is received. The badge shows the number of unread messages, enabling the user to promptly gauge the amount of new messages they have received. The purpose of this feature is to enhance the user experience by providing an effortless way to access messages without having to navigate to a separate page. Users can access their messages with a single click on the messenger icon, and the badge serves as a visual indicator that there is a new message waiting for them.
+
+## Messenger (React App) 
+
+The website's messenger function is there for users to communicate and schedule sessions. It was developed using React and Typescript and is integrated into a page in a Django App, where all messenger-related navigation is controlled by a React router. The real-time feature is achieved by using websockets in conjunction with Django Channels, a library that allows Django to handle websockets and HTTP requests. This results in a seamless and responsive experience where users can send and receive messages instantly, without having to refresh the page. Users can view their message history and receive notifications when they get new messages.
+
+### Websocket (Django Channels) 
+
+[Django Channels](https://channels.readthedocs.io/en/stable/) was used to add websocket support to the Django project. It extends the functionality of Django by allowing the handling of multiple protocols, such as the HTTP protocol which is used by default, and the websocket protocol which enables real-time functionality.
+
+To set up websockets in the project, Django Channels uses an asgi application, which is responsible for handling the HTTP protocol, and a URL router that handles the websocket protocol.
+
+**Daphne**
+
+Daphne is an ASGI server that can handle HTTP and WebSocket connections, and is designed specifically for use with Django Channels. On the other hand, Uvicorn is an ASGI server built on asyncio, which can handle both HTTP and WebSocket connections, but is not designed for use with Django Channels. The author chose to use Daphne for this project because of its support for WebSockets and other asynchronous protocols. However, Daphne may not be optimized for handling large numbers of traditional HTTP requests and may require a reverse proxy like Nginx or Apache when scaling up.
+
+**Redis**
+
+Redis is an in-memory data store that can be used as a backend for Django Channels. Channels are unique identifiers representing a connection between a client and server. Redis stores information about the list of channels and the clients subscribed to them, which helps in handling a large number of concurrent connections and messages in real-time. In this project, Redis is utilized as the channel layer to store information about groups of users connected to a WebSocket and enable efficient communication across different instances of the application. Additionally, Redis can be used as a caching system and to store session data, which can improve the application's performance.
+
+### Chat
+
+The full conversation view allows users to view all the messages exchanged with another user in a conversation. The conversation is displayed in chronological order, with the most recent messages appearing at the bottom. The view initially loads the last 50 messages, and as the user scrolls up, more messages are loaded via infinite scroll, allowing the user to view the entire conversation without having to reload the page. 
+
+## JS Bundling
+
+JavaScript bundling is an optimization technique we can use to reduce the number of server requests for JavaScript files. Webpack is a JavaScript bundler that allows to package and optimize JavaScript code for production use.
+In the project before bundling the code was compiled with Babel, a JavaScript transpiler that allows to write modern JS code and then converting it to a version that is compatible with older browsers. 
+
 ___
 
 # Technologies

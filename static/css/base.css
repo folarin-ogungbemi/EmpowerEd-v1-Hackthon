@@ -41,7 +41,6 @@
     --fs-xl: clamp(2rem, 7vw, 4rem);
     --bg:linear-gradient(39deg, rgba(27, 255, 0, 0.34) 0%, rgba(162, 223, 157, 0.2) 28%, rgba(157, 221, 223, 0.08) 50%, rgba(0, 100, 183, 0.09) 73%, rgba(130, 136, 238, 0.4) 100%);;
     --bg-web:-webkit-linear-gradient(39deg, rgba(27, 255, 0, 0.34) 0%, rgba(162, 223, 157, 0.2) 28%, rgba(157, 221, 223, 0.08) 50%, rgba(0, 100, 183, 0.09) 73%, rgba(130, 136, 238, 0.4) 100%);;
-    --col-pry: #1bff00;
     --col-pry-light:#a2df9d;
     --col-sec: #8288ee;
     --col-light:#fff;
