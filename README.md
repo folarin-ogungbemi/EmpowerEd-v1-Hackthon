@@ -432,6 +432,20 @@ ___
     5. Paste the same value as `REDIS_URL_STUNNEL`
 ___
 
+# Credits
 
+## Media
+
+The Images were products from [Google](https://www.google.de/ "visit google main page")
+
+## Code
+
+- Understanding of Bootstrap was obtained from [documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
+- Understanding of AllAuth was obtained from [documentation](https://django-allauth.readthedocs.io/en/latest/).
+- Understanding of Django Channels was obtained from [documentation](https://channels.readthedocs.io/en/stable/).
+- Understanding of Redis was obtained from [documentation](https://redis.io/docs/getting-started/).
+
+## Acknowledgements
+A big hug for the effort through the process.
 
 ___
