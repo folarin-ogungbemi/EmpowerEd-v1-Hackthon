@@ -227,9 +227,14 @@
     max-height: 12rem;
 }
 
+.parent,
+.children,
 .pen{
     color: var(--col-sec) !important;
 }
+
+.parent:hover,
+.children:hover,
 .pen:hover{
     color: var(--col-pry-light) !important;
 }
