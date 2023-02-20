@@ -5,7 +5,7 @@ from .models import Mentor, Resource, Parent, Student, Lesson
 from .forms import MentorProfileForm, StudentProfileForm, ParentProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse
 
 
 class LandingView(generic.TemplateView):
@@ -44,7 +44,7 @@ class UserProfileDetailView(LoginRequiredMixin, generic.DetailView):
     """
     template_name = "profile.html"
     context_object_name = "profile"
-    
+
     def get_queryset(self):
         User = get_user_model()
         user_pk = self.kwargs['pk']
@@ -101,35 +101,51 @@ class UserProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
     A view for updating a user's profile.
     """
     template_name = "update_profile.html"
+    form_class = None
+    queryset = None
 
     def get_form_class(self):
         """
         Return a different form class based on the user's role
         """
-        if self.request.user.role == "Student":
-            return StudentProfileForm
-        elif self.request.user.role == "Parent":
-            return ParentProfileForm
-        elif self.request.user.role == "Mentor":
-            return MentorProfileForm
-        else:
-            return UserProfileForm
+        if self.form_class is None:
+            if self.request.user.role == "Student":
+                self.form_class = StudentProfileForm
+            elif self.request.user.role == "Parent":
+                self.form_class = ParentProfileForm
+            elif self.request.user.role == "Mentor":
+                self.form_class = MentorProfileForm
+        return self.form_class
 
-    def get_object(self):
-        return self.request.user
-
-    def get_success_url(self):
-        return reverse_lazy('home:profile', kwargs={'pk': self.user.pk})
-
-    def get_queryset(self):
-        if self.request.user.role == "Student":
-            return Student.objects.all()
-        elif self.request.user.role == "Parent":
-            return Parent.objects.all()
-        elif self.request.user.role == "Mentor":
-            return Mentor.objects.all()
+    def get_object(self, queryset=None):
+        """
+        Returns the Student/Parent/Mentor instance connected to the user.
+        """
+        user = self.request.user
+        if user.role == "Student":
+            return Student.objects.get(user_id=user)
+        elif user.role == "Parent":
+            return Parent.objects.get(user_id=user)
+        elif user.role == "Mentor":
+            return Mentor.objects.get(user_id=user)
         else:
             return None
+
+    def get_success_url(self):
+        return reverse('home:profile', kwargs={'pk': self.request.user.pk})
+
+    def get_queryset(self):
+        """
+        Return a queryset based on the user's role
+        """
+        if self.queryset is None:
+            if self.request.user.role == "Student":
+                self.queryset = Student.objects.all()
+            elif self.request.user.role == "Parent":
+                self.queryset = Parent.objects.all()
+            elif self.request.user.role == "Mentor":
+                self.queryset = Mentor.objects.all()
+        return self.queryset
 
     def form_valid(self, form):
         """
@@ -137,5 +153,6 @@ class UserProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         superclass's form_valid method.
         """
         form.save()
+        print(form.cleaned_data)
         return super(UserProfileUpdateView, self).form_valid(form)
 
