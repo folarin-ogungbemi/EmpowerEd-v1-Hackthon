@@ -2,23 +2,20 @@
 {% load static %}
 
 {% load crispy_forms_tags %}
-
-
 {% block content %}
-<main>
-    <section>
-        <div class="row mx-1">
-            <div class="container-fluid col-lg-8 mt-1">
-                <div class="d-flex align-items-center">
-                    <h1 class="section-title text-start pb-0">Edit Profile</h1>
-
-                </div>
-                <h2>{{ request.user }}</h2>
-
-                {% csrf_token %}
-                {% crispy form %}
-
-            </div>
+<div class="row mx-1">
+    <div class="container col-lg-8 mt-1">
+        <div class="d-flex justify-content-between">
+            <h2 class="mb-3">Edit Profile</h2>
+            <a class="fs-5 text-empower text-decoration-none" href="{% url 'home:profile' user.pk %}">{{ request.user }}</a>
         </div>
-    </section>
-    {% endblock content %}
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="mb-3">
+                <button class="btn global-action-btn rounded-pill" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
