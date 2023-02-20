@@ -207,7 +207,7 @@ export default function Chat() {
               }}
             ></i>
           </Link>
-          <a href={`/users/profile/${to_user?.pk}`}
+          <a href={`/profile/${to_user?.pk}`}
             target="_blank"
             aria-label="View user's profile (opens in a new tab)"
             title="View user's profile (opens in a new tab)"

@@ -83,10 +83,12 @@ class UserProfileDetailView(LoginRequiredMixin, generic.DetailView):
             context['age'] = calculate_age(user.student.date_of_birth)
             context['student_mentor'] = user.student.relationship_set.all()
             context['student_parent'] = user.student.parent
+            context['lessons'] = user.student.lesson_set.all()
         elif user.role == "Parent":
             context['parent_student'] = user.parent.student_set.all()
         elif user.role == "Mentor":
             context['mentor_student'] = user.mentor.relationship_set.all()
+            context['lessons'] = user.mentor.lesson_set.all()
         return context
 
 

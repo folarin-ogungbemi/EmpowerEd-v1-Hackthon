@@ -67,7 +67,7 @@ export default function ActiveConversations() {
         <Card.Header
           style={{
             fontSize: '18px',
-            background: '#2f2d2d',
+            background: '#1ab175',
             color: '#f8fbfe',
           }}
           className="px-4">
