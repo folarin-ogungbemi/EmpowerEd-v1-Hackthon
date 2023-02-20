@@ -10,15 +10,15 @@
         <div class="container reg">
             <div class="row">
                 <div class="col-12 mt-3 reg-content">
-                    <h4 class="text-center mb-3">{% trans "Sign In" %}</h4>
+                    <h2 class="mb-3">{% trans "Sign In" %}</h2>
                     <form class="login" method="POST" action="{% url 'account_login' %}">
                         {% csrf_token %}
                         {{ form|crispy }}
                         <div class="d-grid gap-2">
-                            <button class="btn btn-danger" type="submit">{% trans "Sign In" %}</button>
+                            <button class="btn global-action-btn rounded-pill" type="submit">{% trans "Sign In" %}</button>
                         </div>
                         <div class="my-3">
-                            <span>{% blocktrans %}Do not have an Account? <a class="text-danger"
+                            <span>{% blocktrans %}Do not have an Account? <a class="text-empower"
                                     href="{{ signup_url }}">Create Account</a>{% endblocktrans %}</span>
                         </div>
                     </form>

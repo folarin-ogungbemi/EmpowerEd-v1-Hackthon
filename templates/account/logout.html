@@ -11,11 +11,11 @@
     <div class="container reg">
         <div class="row">
             <div class="col-12 mt-3 reg-content">
-                <h4 class="text-center mb-3">{% trans "Sign Out" %}</h4>
+                <h2 class="mb-3">{% trans "Sign Out" %}</h2>
                 <p>{% trans 'Are you sure you want to sign out?' %}</p>
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
-                    <button class="btn btn-danger form-control" type="submit">{% trans 'Sign Out' %}</button>
+                    <button class="btn global-action-btn rounded-pill" type="submit">{% trans 'Sign Out' %}</button>
                 </form>
             </div>
         </div>

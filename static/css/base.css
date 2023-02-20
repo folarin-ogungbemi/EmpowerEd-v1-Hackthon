@@ -91,10 +91,23 @@
     color: var(--col-light) !important;
 }
 
+.global-action-btn:focus,
+.hero-action-btn:focus{
+    background-color:var(--col-pry-light) !important;
+    color: var(--col-light) !important;
+}
+
 /* form */
 .asteriskField{
     color: #dc3545;
     padding: 0.1rem;
+}
+
+.text-empower{
+    color: var(--col-sec);
+}
+.text-empower:hover{
+    color: var(--col-pry-light);
 }
 
 /*  ***********
