@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="row">
                 {% if profile.user_id.role == 'Mentor' %}
-                <div class="col-6">
+                <div class="col-10 col-md-6 mx-auto">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt="{{ profile }} profile picture">
                         <div class="container profile d-flex gap-2">
@@ -25,18 +25,18 @@
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>{% endif %}
                         </div>
-                        <a class="global-action-btn btn rounded-pill mt-3" href="#">contact mentor</a>
+                        <a href="{% url 'messages:messages_with_path' 'conv' %}{{user.pk}}_{{profile.user_id.pk}}?q=conv{{user.pk}}_{{profile.user_id.pk}}" class="btn global-action-btn rounded-pill">contact mentor</a>
                     </div>
                     <p><strong>Area of Expertise:</strong> {{ profile.area_of_expertise }}</p>
                     <p><strong>Bio:</strong> {{ profile.bio }}</p>
 
                 </div>
-                <div class="col-6">
-                    <p>Students:</p>
+                <div class="col-12 col-md-6">
+                    <p class="fs-5">Students</p>
                     {% for relationship in mentor_student %}
-                    <p><a
-                            href="{% url 'home:profile' relationship.student_id.user_id.pk %}">{{ relationship.student_id }}</a>
-                    </p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa-solid fa-graduation-cap me-2"></i><a class="text-decoration-none children" href="{% url 'home:profile' relationship.student_id.user_id.pk %}">{{ relationship.student_id }}</a></li>
+                    </ul>
                     {% endfor %}
                 </div>
 
@@ -95,7 +95,7 @@
                                <i class="fa-solid fa-pen-to-square"></i>
                            </a>{% endif %}
                         </div>
-                        <a class="global-action-btn btn rounded-pill mt-3" href="#">contact parent</a>
+                        <a href="{% url 'messages:messages_with_path' 'conv' %}{{user.pk}}_{{profile.user_id.pk}}?q=conv{{user.pk}}_{{profile.user_id.pk}}" class="btn global-action-btn rounded-pill">contact parent</a>
                     </div>
                     <p class="fs-5">Children</p>
                     {% for relationship in parent_student %}
