@@ -1,7 +1,7 @@
 from django.views import generic
 from datetime import date, timedelta
 from django.contrib.auth import get_user_model
-from .models import Mentor, Resource, Parent, Student
+from .models import Mentor, Resource, Parent, Student, Lesson
 from .forms import MentorProfileForm, StudentProfileForm, ParentProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
@@ -85,6 +85,10 @@ class UserProfileDetailView(LoginRequiredMixin, generic.DetailView):
             context['student_parent'] = user.student.parent
             context['lessons'] = user.student.lesson_set.all()
         elif user.role == "Parent":
+            parent = get_object_or_404(Parent, user_id=user)
+            students = parent.student_set.all()
+            lessons = Lesson.objects.filter(student__in=students)
+            context['lessons'] = lessons
             context['parent_student'] = user.parent.student_set.all()
         elif user.role == "Mentor":
             context['mentor_student'] = user.mentor.relationship_set.all()
