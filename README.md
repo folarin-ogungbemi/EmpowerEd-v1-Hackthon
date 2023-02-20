@@ -88,6 +88,34 @@ ___
 
 # Technologies
 ## Languages
+- HTML, CSS, JavaScript, TypeScript, Python+Django
+## Programs, frameworks, libraries
+- [Django](https://www.djangoproject.com/) for backend and frontend functionality.
+- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) for authentication, registration and account management.
+- [Django Channels](https://channels.readthedocs.io/en/stable/) for websockets and ASGI.
+- [Django Rest Framework](https://www.django-rest-framework.org/) for building API.
+- [Redis](https://redis.io/) backend for handling WebSockets, to facilitate. Django Channels channel layers.
+- [Redis Cloud](https://app.redislabs.com/#/) cloud database service based on Redis.
+- [PostgreSQL](https://www.postgresql.org/) relational database.
+- [Psycopg](https://www.psycopg.org/) PostgreSQL adapter for Python.
+- [Elephant SQL](https://www.elephantsql.com/) to manage PostgreSQL databases.
+- [Bootstrap](https://getbootstrap.com/) for styling.
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) for pretty forms.
+- [Crispy Bootstrap](https://pypi.org/project/crispy-bootstrap5/) for styling Crispy forms.
+- [Boxicons](https://boxicons.com/) for icons.
+- [FontAwesome](https://fontawesome.com/) for icons.
+- [Google Fonts](https://fonts.google.com/) for typography.
+- [Gitpod](https://gitpod.io/) IDE to develop the app.
+- [GitHub](https://GitHub.com/) to host the source code.
+- [AWS S3](https://aws.amazon.com/) Amazon web services s3 for static storage.
+- [Heroku](https://www.heroku.com/) to deploy and host the live app.
+- Git to provide version control (to commit and push code to the repository). 
+- [Pillow](https://pypi.org/project/Pillow/) to create fake images for testing.
+- [Unittest](https://docs.python.org/3/library/unittest.html) for Python unit-testing.
+- [Techsini](https://tecnisih.com) to create the Mockup image in this README.
+- [W3C HTML Markup Validator](https://validator.w3.org/) to validate HTML code.
+- [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) to validate CSS code.
+- Code Institute's Template to generate the workspace for the project.
 ___
 
 # Deployment
