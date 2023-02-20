@@ -369,3 +369,23 @@
     }
 }
 
+/*****************
+MEDIA-QUERIES
+*************** */
+
+@media screen and (max-width: 992px)  {
+    .navbar-brand{
+        margin-left: 1rem !important;
+    }
+    .nav-internal-links{
+        justify-content: start !important;
+        margin-left: 1rem;
+    }
+    .navbar-toggler{
+        margin-right: -1rem !important;
+    }
+    .nav #messages{
+        margin: auto !important;
+    }
+}
+
