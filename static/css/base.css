@@ -55,7 +55,7 @@
 
 /* pages */
 .page{
-    margin-top: 4vh;
+    margin-top: 15vh;
     min-height: 85vh;
 }
 
@@ -235,14 +235,35 @@
 }
 
 /*  *****************
+    ABOUT STYLE
+    *************** */
+
+    #about{
+        position: relative;
+        background-image:url("/static/assets/img/about_empowered.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        margin-top: -12vh;
+        z-index: -1;
+    }
+
+    .about-content{
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+    }
+
+/*  *****************
     CHAT STYLE
     *************** */
 /* chat */
 #js-framework-home {
     overflow-y: scroll;
-    height: 80vh;
-    margin-bottom: -30px;
-    width: 50vw;
+    height: fit-content;
  }
 
 #js-framework-home a {
@@ -250,7 +271,7 @@
      text-decoration: none;
  }
 
-#js-framework-home a:hover {
+#js-framework-home a div div div:hover {
      text-decoration: underline;
  }
 
@@ -288,7 +309,7 @@
     .page-link{
         color: var(--col-sec);
     }
-    
+
     .active>.page-link{
         background-color: var(--col-sec);
         border-color: var(--col-sec);
