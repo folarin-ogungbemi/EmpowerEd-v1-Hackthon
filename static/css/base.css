@@ -234,11 +234,13 @@
     color: var(--col-pry-light) !important;
 }
 
+.sessions-student,
 .sessions-mentor{
     text-decoration: none;
     color: var(--col-sec);
 }
 
+.sessions-student:hover,
 .sessions-mentor:hover{
     color: var(--col-pry-light);
 }

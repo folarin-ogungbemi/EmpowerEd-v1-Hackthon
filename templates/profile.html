@@ -16,7 +16,7 @@
                 <div class="col-6">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt="{{ profile }} profile picture">
-                        <div class="container profile d-flex justify-content-between">
+                        <div class="container profile d-flex gap-2">
                             <p class="fw-semibold mt-3">{{ profile.user_id }}</p>
                             <!-- update icon -->
                             {% if profile.user_id == request.user %}
@@ -44,7 +44,7 @@
                 <div class="col-10 col-md-5 mx-auto">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt="{{ profile }} profile picture">
-                        <div class="container profile d-flex justify-content-between">
+                        <div class="container profile d-flex gap-2">
                             <p class="fw-semibold">{{ profile }}</p>
                            {% if profile.user_id == request.user %}
                            <a href="{% url 'home:update_profile' profile.user_id.pk %}" class="link-primary mx-2 pen"
@@ -85,10 +85,10 @@
                 </div>
 
                 {% else %}
-                <div class="col-6">
+                <div class="col-12 col-md-5">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt=" {{ profile }}profile picture">
-                        <div class="container profile d-flex justify-content-between">
+                        <div class="container profile d-flex gap-2">
                             <p class="fw-semibold">{{ profile }}</p>
                            {% if profile.user_id == request.user %}
                            <a href="{% url 'home:profile' profile.user_id.pk %}" class="link-primary mx-2 pen"
@@ -106,12 +106,25 @@
                     {% endfor %}
                     
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-7">
                     <!--other informations-->
-                    <p>Upcoming Sessions: </p>
-                    <!--sessions for parent-->
-                </div>
-
+                    <div class="container sessions">
+                        <p class="fs-5 fw-semibold text-center text-uppercase">Upcoming Sessions</p>
+                        <div class="row">
+                            {% for lesson in lessons %}
+                            <div class="col-12">
+                                <div class="container sessions-info my-2 py-2">
+                                    <p>child: <a class="sessions-student" href="{% url 'home:profile' lesson.student.user_id.pk %}">{{ lesson.student }}</a></p>
+                                    <p>mentor: <a class="sessions-mentor" href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor }}</a></p>
+                                    <div class="flex justify-content-between">
+                                        <small>start: {{ lesson.start_time }}</small>
+                                        <small>end: {{ lesson.end_time }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
