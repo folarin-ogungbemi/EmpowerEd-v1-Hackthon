@@ -202,6 +202,186 @@ ___
 
 # Deployment
 
+This project was deployed using Github and Heroku.
+
+- ## Github
+    To create a new repository I took the following steps:
+    1. Logged into Github.
+    2. Clicked over to the ‘repositories’ section.
+    3. Clicked the green ‘new’ button. This takes you to the create new repository page.
+    4. Once there under ‘repository template’ I chose the code institute template from the dropdown menu.
+    5. I input a repository name then clicked the green ‘create repository button’ at the bottom of the page.
+    6. Once created I opened the new repository and clicked the green ‘Gitpod’ button to create a workspace in Gitpod for editing.
+
+- ## Forking
+    To fork my project you must;
+    1. Sign in to Github and go to my [repository](https://github.com/folarin-ogungbemi/EmpowerEd)
+    2. Locate the Fork button at the top right of the page.
+    3. Select this.
+    4. The fork is now in your repositories.
+
+- ## Clone
+    To clone my project you must;
+    1. Sign in to Github and go to my [repository](https://github.com/folarin-ogungbemi/EmpowerEd)
+    2. Above the list of files click the green ‘code’ button.
+    3. This will bring up a few options as to how you would like to clone. You can select HTTPS, SSH or Github CLI, then click the clipboard icon to copy the URL.
+    4. Open git bash
+    5. Type ‘git clone’ and then paste the URL you copied. Press Enter.
+
+## Set up project locally
+First, ensure the following are set up on your IDE:
+- [PIP3](https://pypi.org/project/pip/) Python package installer.
+- [Python 3.8](https://www.python.org/downloads/release/python-360/) or higher.
+- [Git](https://git-scm.com/) version control.
+To clone the project up locally you can follow the following steps:
+1. Navigate to the repository - [Repository](https://github.com/folarin-ogungbemi/EmpowerEd)
+2. Click the code dropdown button and copy the url.
+3. Open the terminal in your IDE and enter the following code:
+    - ```
+        git clone https://github.com/folarin-ogungbemi/EmpowerEd
+        ```
+4. Install the dependencies needed to run the application by typing the following command into the terminal:
+    - ```
+        pip3 install -r requirements.txt
+5. To set up the database migrate the database models by typing the following commands into the terminal:
+    - ```
+        python3 manage.py showmigrations
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+6. Create a superuser to have access to the django admin dashboard type the following commands into the terminal:
+    - ```
+        python3 manage.py createsuperuser
+        ```
+    - Then set up the account by adding your username, email and password.
+7. Finally, run the app locally by typing the following command into the terminal:
+    - ```
+        python3 manage.py runserver
+        ```
+## Deploy to Heroku
+1. Create a Heroku app:
+    - Go to [Heroku](https://www.heroku.com/) and create an account if you do not have one yet.
+    - From the dashboard click on 'new app' button, name your app and choose the region closest to you.
+    - On the resources tab set up a new Postgres database by searching for 'Postgres'.
+2. On your IDE, install 'dj_database_url' & 'psycopg2' to enable the use of the Postgres database:
+    - In the terminal type the following commands:
+        - ```
+            pip3 install dj_database_url
+            pip3 install psycopg2-binary
+            ```
+3. Add the downloaded dependencies to the requirements file:
+    - ```
+        pip3 freeze > requirements.txt
+        ```
+4. To setup the new database go to to settings.py, import 'dj_database_url', comment out the default database configuration and replace the default database with the following:
+    - ```
+        import dj_database_url
+        DATABASES = {
+            'default': dj_database_url.parse("The URL of your Heroku Postgres database")
+        }
+        ```
+5. Run all migrations to the new Postgres database by entering the following command in the terminal:
+    - ```
+        python3 manage.py migrate
+        ```
+6. Create a superuser by typing the following command into the terminal:
+    - ```
+        python3 manage.py createsuperuser
+        ```
+    - Then set up the account by adding your username, email and password.
+7. In settings.py set up the following to use the Postgres database when the app is running on Heroku and the SQLite3 when the app is running locally:
+    - ```
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        ```
+8. Install Gunicorn (which will act as our webserver) by typing the following commands into the terminal:
+    - ```
+        pip3 install gunicorn
+        pip3 freeze > requirements.txt
+        ```
+9. Type the following into the procfile:
+    - ```
+        web: gunicorn greatkart.wsgi.application
+        ```
+10. Log in into the Heroku terminal:
+    - ```
+        heroku login -i
+        ```
+11. Disable collectstatic to prevent Heroku from collecting static files when deployed, by typing the following command into the terminal:
+    - ```
+        heroku config:set DISABLE_COLLECTSTATIC=1 --app "heroku_app_name"
+        ```
+12. In settings.py add the hostname of the Heroku app, and allow localhost:
+    - ```
+        ALLOWED_HOSTS = ['"heroku_app_name".herokuapp.com', 'localhost']
+        ```
+13. Deploy to Heroku by typing the following commands into the terminal:
+    - ```
+        heroku git:remote -a "heroku_app_name"
+        git push heroku main
+        ```
+14. To set up automatic deployments in Heroku when pushing code to github:
+    - On the deploy tab, connect to github by searching for the repository name and clicking 'Connect'.
+    - Click 'Enable Automatic Deploys"
+15. Update the settings.py file to collect the secret key from the environment, and use an empty string as default:
+    - ```
+        SECRET_KEY = config('SECRET_KEY')
+        ```
+16. Set debug to be true only if there's a variable called "DEVELOPMENT" in the environment.
+    - ```
+        DEBUG = 'DEVELOPMENT' in os.environ
+        ```
+
+## AWS Static files storage
+
+### Create a New Bucket
+1. Go to to [Amazon AWS](https://aws.amazon.com/) and sign in/sign up.
+2. From the 'Services' tab on the AWS Management Console, search 'S3' and select it.
+3. Click the 'Create a new bucket' button:
+    - Enter a bucket name (recommended to be the same name as the Heroku App) and a region (enter the region that is closest to you)
+    - Uncheck the "Block all public access" checkbox and confirm that the Bucket will be public.
+    - Click the "Create bucket" button.
+4. Bucket settings changed to public access.
+        1. Go to the Bucket Policy in the permissions tab and added the below permissions:
+            - Bucket policy
+                {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "PublicReadGetObject",
+                            "Effect": "Allow",
+                            "Principal": "*",
+                            "Action": "s3:GetObject",
+                            "Resource": "arn:aws:s3:::restaurant-booking/*"
+                        }
+                    ]
+                }
+        2. Go to the 'Access Control List' section, and set the object permission to 'Everyone'.
+
+### Connect Django to S3
+1. To connect the S3 bucket to django install the following packages and add them to the requirements file:
+    - ```
+        pip3 install boto3
+        pip3 install django_storages
+        ```
+       ```
+        pip3 freeze > requirements.txt
+        ```
+    - Add (Django) storages to the list of INSTALLED_APPS in settings.py.
+2. Update the settings.py file to tell Django which bucket it should be communicating with.
+    - In Heroku update the config variables:
+        - USE_AWS =  True
+        - AWS_ACCESS_KEY_ID = From the IAM user's data CSV file
+        - AWS_SECRET_ACCESS_KEY = From the the IAM user's data CSV file
+    - Remove the DISABLE_COLLECTSTATIC variable to allow django to collect static files and upload them to S3.
+
+___
+  * 1. Login in or create an account on [Redis Cloud](https://app.redislabs.com/#/). 
+    2. Create a new database, click `connect`, the side panel will appear on the right.
+    3. Click `copy` below the `Redic_CLI` section. Paste it in a text file for now and remove `redis-cli` from the beginning, you will need it to begin with `redis://`.
+    4. Paste the value to your config vars as `REDISCLOUD_URL`.
+    5. Paste the same value as `REDIS_URL_STUNNEL`
+___
+
 # Credits
 
 ## Media
