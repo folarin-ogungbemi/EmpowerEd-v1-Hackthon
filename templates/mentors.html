@@ -23,8 +23,7 @@
                         <div class="container mentor-info ms-0 ps-1">
                             <a class="text-decoration-none text-dark fs-5 fw-semibold" href="{% url 'home:profile' mentor.user_id.pk %}">{{ mentor.user_id }}</a>
                             <p>{{ mentor.area_of_expertise }}</p>
-                            <a href="{% url 'messages:messages_with_path' 'conv' %}{{user.pk}}_{{profile.user_id.pk}}?q=conv{{user.pk}}_{{profile.user_id.pk}}" class="btn global-action-btn rounded-pill">contact mentor</a>
-                        </div>
+                            <a href="{% url 'messages:messages_with_path' 'conv' %}{{user.pk}}_{{mentor.user_id.pk}}?q=conv{{user.pk}}_{{mentor.user_id.pk}}" class="btn global-action-btn rounded-pill">contact mentor</a                        </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:1 %}
