@@ -120,6 +120,16 @@ One of the main reasons we chose to use [django-allauth](https://django-allauth.
 ### User Authentication 
 The project uses a custom user model with email as a user id, instead of using Django's built-in User model, which means that users to register and log in to the website need to use their email address instead of a traditional username, it also uses a custom sign up form. 
 
+## User Profile
+
+For User Profile role we implemented 3 models: Student, Parent and Mentor, instances of which are automatically created based on the role chosen when signing up. They are separate models from the User model and is connected to it through a OneToOneField. These User Profile models contains additional information about the user based on their role. The main reason for this is that it allows for better organisation and maintainability of the codebase.
+
+## Update profile
+
+Users can update their profile information at any time. This feature allows them to make changes to their personal information and a profile picture.
+This feature is beneficial for users as it allows them to keep their profile information up to date and accurate, which is in many ways essential for the purpose of the website.
+
+Users can access the profile update page by clicking on their name in the top right corner of the website, and then clicking on the "Edit Profile" button. Once on the update page, they can edit the fields they wish to change and save the changes by clicking on the "Save" button.
 
 ___
 
