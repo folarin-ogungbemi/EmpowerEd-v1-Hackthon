@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <div class="container justify-content-center">
+            <div class="row justify-content-center">
+                <div class="d-flex flex-column justify-content-center col-md-12 mt-xl-0 mt-xl-3">
+                     <div class="col-12">
+                         <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-4"><img
+                            src="https://media.istockphoto.com/id/525527483/pt/vetorial/triste-rob%C3%B4-demoli%C3%A7%C3%A3o-desenho.jpg?s=612x612&w=0&k=20&c=ivXN0B3LhP6zKh30c-S6YWg2QHc9XUcf9Bf40pkPc-A="
+                            alt="robot" height="300"></div>
+                    <div class="col-12 col-lg-6 col-xl-8 d-flex flex-column justify-content-center mt-lg-5 mt-md-5 mt-5 mb-4">
+                        <h1>error 500</h1>
+                        <h4>Oh no!</h4>
+                        <h2>Something went wrong.</h2>
+                        <p>Try to refresh the page or <br> to the <a href="{% url 'home:home' %}">Home page</a></p>
+
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center mt-lg-5 mt-md-5 mt-5 mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
