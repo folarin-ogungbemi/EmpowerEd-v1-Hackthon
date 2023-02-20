@@ -41,7 +41,7 @@
                 </div>
 
                 {% elif profile.user_id.role == 'Student' %}
-                <div class="col-6">
+                <div class="col-10 col-md-5 mx-auto">
                     <div class="user-profile mb-5">
                         <img src="{{ profile.userpic }}" alt="{{ profile }} profile picture">
                         <div class="container profile d-flex justify-content-between">
@@ -61,13 +61,27 @@
                     <p>Interests: {{ profile.interests }}</p>
 
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-7">
                     <!--other informations-->
-                    <p>Upcoming Sessions: </p>
-                    {% for lesson in lessons %}
-                    <p><a href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor }}</a>
-                        {{ lesson.start_time }}-{{ lesson.end_time }}</p>
-                    {% endfor %}
+                    <div class="container sessions">
+                        <p class="fs-5 fw-semibold text-center text-uppercase">Upcoming Sessions</p>
+                        <div class="row">
+                            {% for lesson in lessons %}
+                            <div class="col-12">
+                                <div class="container sessions-info my-2 py-2">
+                                    <div class="d-flex justify-content-between">
+                                        <p><a class="sessions-mentor" href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor.user_id }}</a></p>
+                                        <p>{{ lesson.mentor.area_of_expertise }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>start: {{ lesson.start_time }}</small>
+                                        <small>end: {{ lesson.end_time }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
 
                 {% else %}
@@ -95,10 +109,7 @@
                 <div class="col-6">
                     <!--other informations-->
                     <p>Upcoming Sessions: </p>
-                    {% for lesson in lessons %}
-                    <p><a href="{% url 'home:profile' lesson.mentor.user_id.pk %}">{{ lesson.mentor }}</a>
-                        {{ lesson.start_time }}-{{ lesson.end_time }}</p>
-                    {% endfor %}
+                    <!--sessions for parent-->
                 </div>
 
                 {% endif %}
