@@ -169,7 +169,11 @@ ___
 - HTML, CSS, JavaScript, TypeScript, Python+Django
 ## Programs, frameworks, libraries
 - [Django](https://www.djangoproject.com/) for backend and frontend functionality.
-- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) for authentication, registration and account management.
+- [React](https://reactjs.org/) for Messenger app.
+- [Babel](https://babeljs.io/) for compiling JS.
+- [React-Bootstrap](https://react-bootstrap.netlify.app/) for styling the React app.
+- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) for authentication registration and account management.
+- [Webpack](https://webpack.js.org/) for bundling JS.
 - [Django Channels](https://channels.readthedocs.io/en/stable/) for websockets and ASGI.
 - [Django Rest Framework](https://www.django-rest-framework.org/) for building API.
 - [Redis](https://redis.io/) backend for handling WebSockets, to facilitate. Django Channels channel layers.
