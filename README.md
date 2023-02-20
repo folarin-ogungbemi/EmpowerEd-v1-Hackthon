@@ -1,6 +1,6 @@
-# EmpowerEd (Team4 Hackathon - noGPThere)
+# Education Platform for Underprivileged Children
 
-[EmpowerEd](team4-empowered.herokuapp.com/) 
+[EmpowerEd](team4-empowered.herokuapp.com/) is an educational platform developed with the aim to provide education resources to underprivileged children. The application has a range of features to make learning interactive, accessible and engaging for students while also allowing students to connect with mentors, and providing the avenue for parents to communicate conveniently with teachers. In summary, the Website aim to achieve the goal of creating an education enabled environment for students.
 
 ## Table of contents
 
@@ -36,7 +36,10 @@
 
 
 # Purpose
+
+The Django framework is utilized to build the website, which serves as the backend and handles tasks such as user authentication, data management, and routing. Moreover, the majority of the frontend is also handled by Django. A key feature of the website is the implementation of a React component that enables real-time communication and updates via WebSockets. As a result, users can enjoy a seamless and interactive experience, with parts of the website updating in real-time without the need to refresh the page. Overall, the website leverages Django's power and flexibility, as well as React and WebSockets' dynamic capabilities, to deliver a smooth and responsive user experience.
 [The live website is available here](team4-empowered.herokuapp.com/)
+
 ___
 
 # UX Design
