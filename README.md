@@ -9,19 +9,12 @@
 * [Purpose](#purpose)
 
 * [UX Design](#ux-design)
-  * [User Stories](#user-stories)
-  * [UAC](#uac)
-  * [Structure](#structure)
-
-* [Wireframes](#wireframes)
 
 * [Design](#design)
 
 * [Development Plan](#development-plan)
 
 * [Architecture](#architecture)
-
-* [Data Model](#data-model)
 
 * [Features](#features)
   * [Feature Considerations](#feature-considerations)
@@ -47,25 +40,7 @@ ___
 # UX Design
 ## User stories
 
-
-### As a **first time user**
-
-### As a **returning user**
-
-___
-## UAC
-___
-
-
-## Structure
-
-
-### Home Page
-
-### Sign Up Page
-
-### Sign In Page
-___
+See projects 
 
 ___
 # Development Plan
@@ -213,6 +188,10 @@ JavaScript bundling is an optimization technique we can use to reduce the number
 In the project before bundling the code was compiled with Babel, a JavaScript transpiler that allows to write modern JS code and then converting it to a version that is compatible with older browsers. 
 
 ___
+
+# Testing
+
+Test are included in home
 
 # Technologies
 ## Languages
