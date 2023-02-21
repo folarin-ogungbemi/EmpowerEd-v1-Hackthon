@@ -2,7 +2,7 @@
 
 ![](/media/homepage_mockup.jpg)
 
-[EmpowerEd](team4-empowered.herokuapp.com/) is an educational platform developed with the aim to provide education resources to underprivileged children. The application has a range of features to make learning interactive, accessible and engaging for students while also allowing students to connect with mentors, and providing the avenue for parents to communicate conveniently with teachers. In summary, the Website aim to achieve the goal of creating an education enabled environment for students.
+[EmpowerEd](https://team4-empowered.herokuapp.com/) is an educational platform developed with the aim to provide education resources to underprivileged children. The application has a range of features to make learning interactive, accessible and engaging for students while also allowing students to connect with mentors, and providing the avenue for parents to communicate conveniently with teachers. In summary, the Website aim to achieve the goal of creating an education enabled environment for students.
 
 ## Table of contents
 
@@ -33,7 +33,7 @@
 # Purpose
 
 Django framework is utilized to build the website, which serves as the backend and handles tasks such as user authentication, data management, and routing. Moreover, the majority of the frontend is also handled by Django. A key feature of the website is the implementation of a React component that enables real-time communication and updates via WebSockets. As a result, users can enjoy a seamless and interactive experience, with parts of the website updating in real-time without the need to refresh the page. Overall, the website leverages Django's power and flexibility, as well as React and WebSockets' dynamic capabilities, to deliver a smooth and responsive user experience.
-[The live website is available here](team4-empowered.herokuapp.com/)
+[The live website is available here](https://team4-empowered.herokuapp.com/)
 
 ___
 
@@ -56,7 +56,7 @@ The development of the website has followed an Agile methodology, using GitHub's
 
 The project was constrained by time limitations, which resulted in some initially listed features not being implemented. However, AGILE methodology is incredibly helpful in situations like this, as it allows for the prioritization and tracking of user stories. Completed user stories are in the "Done" section and the ones that were not prioritised for the first iteration are currently in the "To Do" section to be covered in the next iteration.
 
-See the current state of the project here. [EmpowerEd](team4-empowered.herokuapp.com/)
+See the current state of the project here. [EmpowerEd](https://team4-empowered.herokuapp.com/)
 
 Using a hybrid architecture has a significant advantage of using Django's built-in tooling to handle authentication, which means that we can easily add authentication functionalities to our hybrid Django view without relying on complicated third-party authentication workflows. Another advantage of the hybrid architecture is that it allows us to send data to the frontend in two different ways, either by passing the data directly to the template using Django's templating system, or by providing the data through asynchronous APIs using JavaScript and Django REST framework. This method enables fast data loading using the native fetch API and authentication is handled seamlessly by the Django session cookie, without wrestling with CORS.
 
